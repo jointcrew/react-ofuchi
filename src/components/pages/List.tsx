@@ -1,12 +1,17 @@
 import React from 'react';
 import Header from '../organisms/Header';
-import {Routing} from '../../config/Router';
+import {GalleryList} from '../organisms/Gallerylist';
 
-const List: React.FC = () => {
+interface urlProps{
+  url: number,
+}
+
+const List: React.FC<urlProps> = (props) => {
+  const pagenumber:number = props.url;
   return(
     <div>
       <Header />
-      <Routing />
+      <GalleryList num={pagenumber} />
     </div>
   )
 }
