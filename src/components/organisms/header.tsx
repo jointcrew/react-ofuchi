@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {routePath} from './constants/route';
+import {routePath} from '../../constants/route';
 
 
 const Header: React.FC = () => {

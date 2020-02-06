@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from "react-router-dom";
-import {GalleryList} from '../gallerylist';
+import {GalleryList} from '../components/organisms/gallerylist';
 import {routePath} from '../constants/route';
 
 

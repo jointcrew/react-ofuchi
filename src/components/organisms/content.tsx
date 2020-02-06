@@ -1,7 +1,6 @@
 import React, { useState, useCallback, } from 'react';
-import { Slide } from './constants/images';
+import { Slide } from '../../constants/images';
 import {Link} from 'react-router-dom';
-import {Routing} from './config/router';
 
 
 
@@ -35,7 +34,6 @@ const Content: React.FC = () => {
         <Link to='/location1'><img src={Slide[count]} alt="" key={Slide[count]}/></Link>
         <button onClick={handleDecrement}>-1</button>
       </p>
-      <Routing />
     </section>
   )
 }

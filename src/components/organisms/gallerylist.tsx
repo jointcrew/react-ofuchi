@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gallery } from './constants/images';
+import { Gallery } from '../../constants/images';
 
 
 interface numProps{
