@@ -1,14 +1,14 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {routePath} from '../constants/Route';
 import Main from '../components/pages/Main';
 import List from '../components/pages/List';
 
 
 
-export const Routing: React.FC = () => {
+export const Router: React.FC = () => {
   return(
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route path={routePath.PAGE_ONE}>
           <List url={0} />
@@ -26,6 +26,6 @@ export const Routing: React.FC = () => {
           <Main />
         </Route>
       </Switch>
-  </Router>
+  </BrowserRouter>
   )
 }

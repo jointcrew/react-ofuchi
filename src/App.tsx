@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import {Routing} from './config/Router';
+import {Router} from './config/Router';
 
 
 const App: React.FC = () => {
   return (
     <div>
-      <Routing />
+      <Router />
     </div>
   );
 }
