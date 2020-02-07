@@ -1,7 +1,7 @@
 export const routePath = {
   PAGE_TOP : "/",
-  PAGE_ONE : "/location1",
-  PAGE_TWO : "/location2",
-  PAGE_THREE : "/location3",
-  PAGE_FOUR : "/location4",
+  PAGE_ONE : "/gallery/1",
+  PAGE_TWO : "/gallery/2",
+  PAGE_THREE : "/gallery/3",
+  PAGE_FOUR : "/gallery/4",
 }
