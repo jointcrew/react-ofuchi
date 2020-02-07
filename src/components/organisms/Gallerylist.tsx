@@ -3,13 +3,13 @@ import { Gallery } from '../../constants/Images';
 
 
 interface numProps{
-  num: number,
+  listNum: number,
 }
 
 export const GalleryList: React.FC<numProps> = (props) => {
   return(
     <p className="gallerylist">
-      {Gallery[props.num].map((url, index) => <img src={Gallery[props.num][index]} alt={Gallery[props.num][index]} key={Gallery[props.num][index]}/>)}
+      {Gallery[props.listNum].map((url, index) => <img src={Gallery[props.listNum][index]} alt={Gallery[props.listNum][index]} key={Gallery[props.listNum][index]}/>)}
     </p>
   )
 }

@@ -7,11 +7,11 @@ interface urlProps{
 }
 
 const List: React.FC<urlProps> = (props) => {
-  const pagenumber:number = props.listNum;
+  const {listNum} = props
   return(
     <div>
       <Header />
-      <GalleryList num={pagenumber} />
+      <GalleryList listNum={listNum} />
     </div>
   )
 }
