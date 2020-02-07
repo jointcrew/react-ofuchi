@@ -3,11 +3,11 @@ import Header from '../organisms/Header';
 import {GalleryList} from '../organisms/Gallerylist';
 
 interface urlProps{
-  url: number,
+  listnum: number,
 }
 
 const List: React.FC<urlProps> = (props) => {
-  const pagenumber:number = props.url;
+  const pagenumber:number = props.listnum;
   return(
     <div>
       <Header />

@@ -11,16 +11,16 @@ export const Router: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path={routePath.PAGE_ONE}>
-          <List url={0} />
+          <List listnum={0} />
         </Route>
         <Route path={routePath.PAGE_TWO}>
-          <List url={1} />
+          <List listnum={1} />
         </Route>
         <Route path={routePath.PAGE_THREE}>
-          <List url={2} />
+          <List listnum={2} />
         </Route>
         <Route path={routePath.PAGE_FOUR}>
-          <List url={3} />
+          <List listnum={3} />
         </Route>
         <Route path={routePath.PAGE_TOP}>
           <Main />
