@@ -1,18 +1,18 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom'
 import './App.css';
-import Header from './header';
-import Content from './content';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {Router} from './config/Router';
+import Header from './components/organisms/Header';
+
+
 
 
 const App: React.FC = () => {
   return (
-    <Router>
-        <Header />
-      <article>
-        <Content />
-      </article>
-    </Router>
+    <BrowserRouter>
+      <Header />
+      <Router />
+    </BrowserRouter>
   );
 }
 
