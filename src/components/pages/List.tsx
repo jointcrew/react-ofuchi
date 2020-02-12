@@ -1,11 +1,11 @@
 import React from 'react';
 import {GalleryList} from '../organisms/Gallerylist';
 
-interface listNumProps{
+interface ListNumProps{
   listNum: number,
 }
 
-const List: React.FC<listNumProps> = (props) => {
+const List: React.FC<ListNumProps> = (props) => {
   const {listNum} = props
   return(
     <div>
