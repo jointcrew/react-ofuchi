@@ -3,13 +3,13 @@ import {GalleryList} from '../organisms/Gallerylist';
 
 interface ListNumProps{
   listNum: number,
+  location: any
 }
 
 const List: React.FC<ListNumProps> = (props) => {
-  const {listNum} = props
   return(
     <div>
-      <GalleryList listNum={listNum} />
+      <GalleryList listNum={props.location.state.listNum} />
     </div>
   )
 }
