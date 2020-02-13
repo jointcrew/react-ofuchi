@@ -1,9 +1,16 @@
 import React from 'react';
 import {GalleryList} from '../organisms/Gallerylist';
 
+interface ListNum {
+  listNum: number
+}
+
+interface StateList {
+  state: ListNum
+}
+
 interface ListNumProps{
-  listNum: number,
-  location: any
+  location: StateList
 }
 
 const List: React.FC<ListNumProps> = (props) => {
