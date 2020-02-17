@@ -3,13 +3,11 @@ import { Form, Button } from 'antd';
 
 const LogInButton: React.FC = () => {
   return(
-    <Form>
       <Form.Item>
-        <Button>
+        <Button htmlType="submit">
           LogIn
         </Button>
       </Form.Item>
-    </Form>
   )
 }
 

@@ -3,11 +3,9 @@ import { Form, Input } from 'antd';
 
 const PasswordForm: React.FC = () => {
   return(
-    <Form>
       <Form.Item>
         <Input placeholder="Password"/>
       </Form.Item>
-    </Form>
   )
 }
 
