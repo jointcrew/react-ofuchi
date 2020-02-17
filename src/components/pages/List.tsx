@@ -1,15 +1,16 @@
 import React from 'react';
+import * as H from 'history'
+import {RouteComponentProps} from 'react-router-dom'
 import {GalleryList} from '../organisms/Gallerylist';
 
-interface listNumProps{
-  listNum: number,
+interface ListProps extends RouteComponentProps{
+  location: H.Location<{listNum: number}>
 }
 
-const List: React.FC<listNumProps> = (props) => {
-  const {listNum} = props
+const List = (props: ListProps) => {
   return(
     <div>
-      <GalleryList listNum={listNum} />
+      <GalleryList listNum={props.location.state.listNum} />
     </div>
   )
 }

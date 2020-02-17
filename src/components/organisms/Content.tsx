@@ -33,7 +33,10 @@ const Content: React.FC = () => {
       <p>You clicked {count} times</p>
       <p>
         <button onClick={handleIncrement}>+1</button>
-        <Link to={`${routePath.GALLERY}/1`}><img src={Slide[count]} alt="" key={Slide[count]}/></Link>
+        <Link to={{
+          pathname:`${routePath.GALLERY}/${count + 1}`,
+          state: { listNum: count }
+        }}><img src={Slide[count]} alt="" key={Slide[count]}/></Link>
         <button onClick={handleDecrement}>-1</button>
       </p>
     </section>
