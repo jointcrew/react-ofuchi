@@ -1,9 +1,13 @@
 import React from 'react';
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
 const MailForm: React.FC = () => {
   return(
-    <Form></Form>
+    <Form>
+      <Form.Item>
+        <Input placeholder="E-mail"/>
+      </Form.Item>
+    </Form>
   )
 }
 

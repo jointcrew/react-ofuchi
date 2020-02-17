@@ -1,9 +1,13 @@
 import React from 'react';
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
 const PasswordForm: React.FC = () => {
   return(
-    <Form></Form>
+    <Form>
+      <Form.Item>
+        <Input placeholder="Password"/>
+      </Form.Item>
+    </Form>
   )
 }
 
