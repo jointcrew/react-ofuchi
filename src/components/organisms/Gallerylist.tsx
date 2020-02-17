@@ -9,7 +9,7 @@ interface ListNumProps{
 export const GalleryList: React.FC<ListNumProps> = (props) => {
   return(
     <p className="gallerylist">
-      {Gallery[props.listNum].map((url) => <img src={url} alt={url} key={url}/>)}
+      {Gallery[props.listNum].map((imgPath: string) => <img src={imgPath} alt={imgPath} key={imgPath}/>)}
     </p>
   )
 }
