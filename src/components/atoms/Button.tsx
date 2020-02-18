@@ -17,7 +17,7 @@ const LogInButton: React.FC<ButtonProps> = (props) => {
   // }else{
   //   setButton({disabled: true})
   // }
-  const { getFieldsError } = props.form;
+  //const { getFieldsError } = props.form;
   return(
       <Form.Item>
         <Button htmlType="submit"  disabled={hasErrors(props.form)}>
