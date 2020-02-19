@@ -24,14 +24,14 @@ const MailForm: React.FC<DecoratorProps> = (props) => {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [
           {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-            // インプットタイプとそれにそぐわない入力内容の際に出力するエラーメッセージの設定（〇〇＠〇〇.〇〇の形式）
-          },
-          {
             required: true,
             message: 'Please input your E-mail!',
             // 必須入力の設定と未入力の際に出力するエラーメッセージの設定（一度入力開始後に内容を削除した際にエラー扱いとなる）
+          },
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+            // インプットタイプとそれにそぐわない入力内容の際に出力するエラーメッセージの設定（〇〇＠〇〇.〇〇の形式）
           },
         ],
       })(<Input placeholder="E-mail"/>)}

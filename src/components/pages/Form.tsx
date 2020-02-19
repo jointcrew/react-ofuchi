@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Form } from 'antd';
 // antdesignのFormコンポーネントの読み込み
@@ -14,17 +14,27 @@ import LogInButton from '../atoms/Button';
 
 const LogInForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
+
+  useEffect(() => {
+    props.form.validateFields()
+  }, [])
+  //初回レンダリング時のボタン非活性化
+  
   const handleSubmit = (e: any) => {
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
       // 各フォームのエラーと値を取得
       if (!errors) {
-        console.log('Received values of form: ', values);
-        // もしエラーが発生していなければ文字列と各フォームの値（オブジェクト形式）をコンソールに出力
+        console.log(values);
+        // エラーが発生していなければ各フォームの値（オブジェクト形式）をコンソールに出力
       }
     });
   };
+
+
+
+
   const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = props.form;
   // propsを分割代入
   return(
