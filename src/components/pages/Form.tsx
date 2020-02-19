@@ -7,6 +7,11 @@ import LogInButton from '../atoms/Button';
 
 interface FormProps extends FormComponentProps{}
 
+export const hasErrors = (fieldsError: any): boolean => {
+  return Object.keys(fieldsError).some(field => fieldsError[field]);
+}
+
+
 const LogInForm: React.FC<FormProps> = (props) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -19,8 +24,8 @@ const LogInForm: React.FC<FormProps> = (props) => {
   const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = props.form;
   return(
     <Form onSubmit={handleSubmit}>
-      <MailForm form={{getFieldDecorator, getFieldError, isFieldTouched}} getFieldDecorator/>
-      <PasswordForm form={{getFieldDecorator, getFieldError, isFieldTouched}} getFieldDecorator/>
+      <MailForm form={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <PasswordForm form={{getFieldDecorator, getFieldError, isFieldTouched}} />
       <LogInButton form={getFieldsError} />
     </Form>
   )

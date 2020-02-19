@@ -1,29 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form, Button } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
+import { hasErrors } from '../pages/Form';
 
 interface ButtonProps extends FormComponentProps {
   form: any
 }
 
-function hasErrors(fieldsError: any) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 
 const LogInButton: React.FC<ButtonProps> = (props) => {
-  // const [button, setButton] = useState({disabled: true});
-  // if(1 < 0) {
-  //   setButton({disabled: false})
-  // }else{
-  //   setButton({disabled: true})
-  // }
-  //const { getFieldsError } = props.form;
+  const { getFieldsError } = props.form;
+  const [button, setButton] = useState({disabled: true});
+  if(getFieldsError === true) {
+    setButton({disabled: false})
+    console.log(button);
+  }else{
+    console.log(hasErrors(button));
+  }
   return(
-      <Form.Item>
-        <Button htmlType="submit"  disabled={hasErrors(props.form)}>
-          LogIn
-        </Button>
-      </Form.Item>
+    <Form.Item>
+      <Button htmlType="submit"  disabled={hasErrors(button)}>
+        LogIn
+      </Button>
+    </Form.Item>
   )
 }
 
