@@ -11,13 +11,14 @@ interface ButtonProps extends FormComponentProps {
   // エラー解消のため暫定で型定義
 }
 
-const hasErrors = (fieldsError: any): boolean => {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
-// fieldsErrorオブジェクトの名前部分を配列に変換して配列項目にエラーが出るかテスト
+
 
 const LogInButton: React.FC<ButtonProps> = (props) => {
   // 関数コンポーネントかつButtonPropsとして型定義を行いpropsを受け取る
+  const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
+    return Object.keys(fieldsError).some(field => fieldsError[field]);
+  }
+  // fieldsErrorオブジェクトの名前部分を配列に変換して配列項目にエラーが出るかチェック
   const getFieldsError = props.form;
   // propsを代入
 

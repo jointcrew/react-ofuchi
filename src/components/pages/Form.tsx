@@ -17,10 +17,11 @@ const LogInForm: React.FC<FormComponentProps> = (props) => {
 
   useEffect(() => {
     props.form.validateFields()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  //初回レンダリング時のボタン非活性化
+  //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
