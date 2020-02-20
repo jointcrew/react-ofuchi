@@ -12,7 +12,7 @@ import LogInButton from '../atoms/Button';
 // ログインボタンコンポーネントの読み込み
 
 
-const LogInForm: React.FC<FormComponentProps> = (props) => {
+const LoginForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
 
   useEffect(() => {
@@ -49,10 +49,10 @@ const LogInForm: React.FC<FormComponentProps> = (props) => {
   )
 }
 
-const WrappedLogInForm = Form.create({ name: 'login_form' })(LogInForm);
+const Login = Form.create({ name: 'login_form' })(LoginForm);
 // 高階コンポーネントとしてLogInFormコンポーネントにpropsを設定してそれを利用してvalidateを行うための情報取得
 
 
 
-export default WrappedLogInForm;
+export default Login;
 // 他のコンポーネントで使用できるようにexport（元のコンポーネント名ではなく高階コンポーネントとして設定したコンポーネント名でエクスポート）
