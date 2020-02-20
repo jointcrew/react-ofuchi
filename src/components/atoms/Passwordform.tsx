@@ -1,21 +1,23 @@
 import React from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Form, Input } from 'antd';
+import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
 // antdesignのForm、Inputコンポーネントの読み込み
-import { FormComponentProps } from 'antd/es/form';
-// antdesignの型定義読み込み
 
-interface PasswordFormProps extends FormComponentProps {
-  // FormComponentPropsを継承した型定義設定
-  form: any
-  // エラー解消のため暫定で型定義
+interface PasswordFormProps {
+  passform: {
+    getFieldDecorator: <T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions | undefined) => (node: React.ReactNode) => React.ReactNode;
+    getFieldError: (name: string) => string[] | undefined;
+    isFieldTouched: (name: string) => boolean;
+  }
+  // propsの型定義
 }
 
 const PasswordForm: React.FC<PasswordFormProps> = (props) => {
   // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
-  const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
+  const { getFieldDecorator, getFieldError, isFieldTouched } = props.passform;
   // propsを分割代入
-  const passwordError: boolean = isFieldTouched("password") && getFieldError("password");
+  const passwordError: false | string[] | undefined = isFieldTouched("password") && getFieldError("password");
   // パスワードインプットフィールドをクリック後エラーが発生した場合にtrueを代入し、そうでない場合にfalseを代入
   return(
     <Form.Item label="Password" validateStatus={passwordError ? 'error' : ''} help={passwordError || ''}>

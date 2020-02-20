@@ -41,9 +41,9 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
   return(
     <Form onSubmit={handleSubmit}>
       {/* ボタンを押下した際の動作を設定 */}
-      <MailForm form={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <PasswordForm form={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <LogInButton form={getFieldsError} />
+      <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <PasswordForm passform={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <LogInButton error={getFieldsError} />
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
     </Form>
   )

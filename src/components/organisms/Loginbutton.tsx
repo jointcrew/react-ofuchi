@@ -2,13 +2,10 @@ import React from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Form, Button } from 'antd';
 // antdesignのForm、Buttonコンポーネントの読み込み
-import { FormComponentProps } from 'antd/es/form';
-// antdesignの型定義読み込み
 
-interface ButtonProps extends FormComponentProps {
-  // FormComponentPropsを継承した型定義設定
-  form: any
-  // エラー解消のため暫定で型定義
+interface ButtonProps {
+  error: (names?: string[] | undefined) => Record<string, string[] | undefined>
+  // propsの型定義
 }
 
 
@@ -19,7 +16,7 @@ const LoginButton: React.FC<ButtonProps> = (props) => {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
   }
   // fieldsErrorオブジェクトの名前部分を配列に変換して配列項目にエラーが出るかチェック
-  const getFieldsError = props.form;
+  const getFieldsError = props.error;
   // propsを代入
 
   return(

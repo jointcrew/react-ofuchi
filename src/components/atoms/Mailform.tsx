@@ -1,21 +1,23 @@
 import React from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Form, Input } from 'antd';
+import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
 // antdesignのForm、Inputコンポーネントの読み込み
-import { FormComponentProps } from 'antd/es/form';
-// antdesignの型定義読み込み
 
-interface MailFormProps extends FormComponentProps {
-  // FormComponentPropsを継承した型定義設定
-  form: any
-  // エラー解消のため暫定での型定義
+interface MailFormProps {
+  mailform: {
+    getFieldDecorator: <T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions | undefined) => (node: React.ReactNode) => React.ReactNode;
+    getFieldError: (name: string) => string[] | undefined;
+    isFieldTouched: (name: string) => boolean;
+  }
+  // propsの型定義
 }
 
 const MailForm: React.FC<MailFormProps> = (props) => {
   // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
-  const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
+  const { getFieldDecorator, getFieldError, isFieldTouched } = props.mailform;
   // 受け取ったpropsを分割代入
-  const emailError: boolean = isFieldTouched('email') && getFieldError('email');
+  const emailError:  false | string[] | undefined = isFieldTouched('email') && getFieldError('email');
   // メールインプットフィールドをクリック後エラーが発生した場合にtrueを代入し、そうでない場合はfalseを代入
   return(
     <Form.Item label="E-mail" validateStatus={emailError ? 'error' : ''} help={emailError || ''}>
