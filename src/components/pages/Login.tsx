@@ -8,7 +8,7 @@ import MailForm from '../atoms/Mailform';
 // メールアドレス用のインプットコンポーネントの読み込み
 import PasswordForm from '../atoms/Passwordform';
 // パスワード用のインプットコンポーネントの読み込み
-import LogInButton from '../atoms/Button';
+import LogInButton from '../organisms/Loginbutton';
 // ログインボタンコンポーネントの読み込み
 
 

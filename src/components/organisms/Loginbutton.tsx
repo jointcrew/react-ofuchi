@@ -13,7 +13,7 @@ interface ButtonProps extends FormComponentProps {
 
 
 
-const LogInButton: React.FC<ButtonProps> = (props) => {
+const LoginButton: React.FC<ButtonProps> = (props) => {
   // 関数コンポーネントかつButtonPropsとして型定義を行いpropsを受け取る
   const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -32,5 +32,5 @@ const LogInButton: React.FC<ButtonProps> = (props) => {
   )
 }
 
-export default LogInButton;
+export default LoginButton;
 // 他のコンポーネントでも使用できるようにexport
