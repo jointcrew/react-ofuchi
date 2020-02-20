@@ -21,7 +21,7 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
   }, [])
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
