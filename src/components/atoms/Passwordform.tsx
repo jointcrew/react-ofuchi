@@ -5,13 +5,13 @@ import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 // antdesignの型定義読み込み
 
-interface DecoratorProps extends FormComponentProps {
+interface PasswordFormProps extends FormComponentProps {
   // FormComponentPropsを継承した型定義設定
   form: any
   // エラー解消のため暫定で型定義
 }
 
-const PasswordForm: React.FC<DecoratorProps> = (props) => {
+const PasswordForm: React.FC<PasswordFormProps> = (props) => {
   // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
   // propsを分割代入

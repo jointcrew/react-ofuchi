@@ -49,8 +49,8 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
   )
 }
 
-const Login = Form.create({ name: 'login_form' })(LoginForm);
-// 高階コンポーネントとしてLogInFormコンポーネントにpropsを設定してそれを利用してvalidateを行うための情報取得
+const Login = Form.create({ name: 'LoginForm' })(LoginForm);
+// 高階コンポーネントとしてLoginFormコンポーネントにpropsを設定してそれを利用してvalidateを行うための情報取得
 
 
 

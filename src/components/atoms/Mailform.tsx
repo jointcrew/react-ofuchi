@@ -5,13 +5,13 @@ import { Form, Input } from 'antd';
 import { FormComponentProps } from 'antd/es/form';
 // antdesignの型定義読み込み
 
-interface DecoratorProps extends FormComponentProps {
+interface MailFormProps extends FormComponentProps {
   // FormComponentPropsを継承した型定義設定
   form: any
   // エラー解消のため暫定での型定義
 }
 
-const MailForm: React.FC<DecoratorProps> = (props) => {
+const MailForm: React.FC<MailFormProps> = (props) => {
   // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.form;
   // 受け取ったpropsを分割代入
