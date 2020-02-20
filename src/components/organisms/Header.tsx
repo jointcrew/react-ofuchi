@@ -25,7 +25,7 @@ const Header: React.FC = () => {
             pathname:`${routePath.GALLERY}/4`,
             state: {listNum: 3 }
           }}>location4</Link></li>
-          <li><Link to={routePath.FORM}>form</Link></li>
+          <li><Link to={routePath.LOGIN}>login</Link></li>
         </ul>
       </div>
       </header>

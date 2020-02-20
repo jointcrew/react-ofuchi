@@ -10,7 +10,7 @@ export const Router: React.FC = () => {
     <>
         <Route exact path={routePath.PAGE_TOP} component={Main} />
         <Route path={`${routePath.GALLERY}/:id`} component={List}/>
-        <Route path={routePath.FORM} component={Login}/>
+        <Route path={routePath.LOGIN} component={Login}/>
     </>
   )
 
