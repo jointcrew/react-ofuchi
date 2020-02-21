@@ -1,8 +1,9 @@
 import React from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Form, Input } from 'antd';
-import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
 // antdesignのForm、Inputコンポーネントの読み込み
+import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
+// 型定義に必要なtypeの読み込み
 
 interface PasswordFormProps {
   passform: {
