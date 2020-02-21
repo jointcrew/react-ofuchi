@@ -8,8 +8,8 @@ import GoBackButton from '../molecules/Gobackbutton';
 // 戻るボタン用のコンポーネントの読み込み
 import MailForm from '../molecules/Mailform';
 // メールアドレス用のインプットコンポーネントの読み込み
-import LogInButton from '../organisms/Loginbutton';
-// ログインボタンコンポーネントの読み込み
+import SubmitButton from '../molecules/Submitbutton';
+// ボタンコンポーネントの読み込み
 
 
 const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
@@ -38,8 +38,10 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
     <Form onSubmit={handleSubmit}>
       <GoBackButton />
       {/* 戻るボタンコンポーネントを出力 */}
+      <p>パスワードをお忘れの場合はご登録いただいているメールアドレスを下記入力欄に入力していただき送信ボタンをクリックしてください。</p>
+      <p>入力いただいたメールアドレス宛に再設定用メールをお送りいたします。</p>
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <LogInButton error={getFieldsError} />
+      <SubmitButton error={getFieldsError}  buttonlabel="E-Mail Send"/>
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
     </Form>
   )

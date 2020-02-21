@@ -5,12 +5,13 @@ import { Form, Button } from 'antd';
 
 interface ButtonProps {
   error: (names?: string[] | undefined) => Record<string, string[] | undefined>
+  buttonlabel: string
   // propsの型定義
 }
 
 
 
-const LoginButton: React.FC<ButtonProps> = (props) => {
+const SubmitButton: React.FC<ButtonProps> = (props) => {
   // 関数コンポーネントかつButtonPropsとして型定義を行いpropsを受け取る
   const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -23,11 +24,12 @@ const LoginButton: React.FC<ButtonProps> = (props) => {
     <Form.Item>
       <Button htmlType="submit"  disabled={hasErrors(getFieldsError())}>
         {/* ボタンパーツのタイプ設定と活性化と非活性化を切り替える処理 */}
-        LogIn
+        {props.buttonlabel}
+        {/* 親コンポーネントからラベルのpropsを受け取り表示 */}
       </Button>
     </Form.Item>
   )
 }
 
-export default LoginButton;
+export default SubmitButton;
 // 他のコンポーネントでも使用できるようにexport

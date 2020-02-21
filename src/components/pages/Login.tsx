@@ -12,8 +12,10 @@ import MailForm from '../molecules/Mailform';
 // メールアドレス用のインプットコンポーネントの読み込み
 import PasswordForm from '../molecules/Passwordform';
 // パスワード用のインプットコンポーネントの読み込み
-import LogInButton from '../organisms/Loginbutton';
-// ログインボタンコンポーネントの読み込み
+import SubmitButton from '../molecules/Submitbutton';
+// ボタンコンポーネントの読み込み
+
+
 
 const LoginForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
@@ -46,7 +48,7 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
       {/* ボタンを押下した際の動作を設定 */}
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
       <PasswordForm passform={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <LogInButton error={getFieldsError} />
+      <SubmitButton error={getFieldsError} buttonlabel="Login"/>
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
       <p><Link to={routePath.PASSWORD_RESET}>パスワードをお忘れの方はこちら</Link></p>
       {/* パスワード忘れページへの導線処理 */}
