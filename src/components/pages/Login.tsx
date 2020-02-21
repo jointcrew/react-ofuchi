@@ -4,9 +4,9 @@ import { Form } from 'antd';
 // antdesignのFormコンポーネントの読み込み
 import { FormComponentProps } from 'antd/es/form';
 // antdesignの型定義読み込み
-import MailForm from '../atoms/Mailform';
+import MailForm from '../molecules/Mailform';
 // メールアドレス用のインプットコンポーネントの読み込み
-import PasswordForm from '../atoms/Passwordform';
+import PasswordForm from '../molecules/Passwordform';
 // パスワード用のインプットコンポーネントの読み込み
 import LogInButton from '../organisms/Loginbutton';
 // ログインボタンコンポーネントの読み込み
