@@ -4,7 +4,7 @@ import {routePath} from '../constants/Route';
 import Main from '../components/pages/Main';
 import List from '../components/pages/List';
 import Login from '../components/pages/Login';
-import PasswordReset from '../components/pages/Passwordreset';
+import PasswordReset from '../components/pages/PasswordReset';
 
 export const Router: React.FC = () => {
   return(
