@@ -41,7 +41,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
       <p>パスワードをお忘れの場合はご登録いただいているメールアドレスを下記入力欄に入力していただき送信ボタンをクリックしてください。</p>
       <p>入力いただいたメールアドレス宛に再設定用メールをお送りいたします。</p>
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <SubmitButton error={getFieldsError}  buttonlabel="E-Mail Send"/>
+      <SubmitButton error={getFieldsError}  buttonLabel="E-Mail Send"/>
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
     </Form>
   )

@@ -1,11 +1,11 @@
 import React from 'react';
 // reactのコードを機能させるために必要なコンポーネントの読み込み
-import { Form, Button } from 'antd';
+import { Button } from 'antd';
 // antdesignのForm、Buttonコンポーネントの読み込み
 
 interface ButtonProps {
   error: (names?: string[] | undefined) => Record<string, string[] | undefined>
-  buttonlabel: string
+  buttonLabel: string
   // propsの型定義
 }
 
@@ -21,13 +21,11 @@ const SubmitButton: React.FC<ButtonProps> = (props) => {
   // propsを代入
 
   return(
-    <Form.Item>
       <Button htmlType="submit"  disabled={hasErrors(getFieldsError())}>
         {/* ボタンパーツのタイプ設定と活性化と非活性化を切り替える処理 */}
-        {props.buttonlabel}
+        {props.buttonLabel}
         {/* 親コンポーネントからラベルのpropsを受け取り表示 */}
       </Button>
-    </Form.Item>
   )
 }
 

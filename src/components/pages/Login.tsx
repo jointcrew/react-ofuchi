@@ -48,7 +48,7 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
       {/* ボタンを押下した際の動作を設定 */}
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
       <PasswordForm passform={{getFieldDecorator, getFieldError, isFieldTouched}} />
-      <SubmitButton error={getFieldsError} buttonlabel="Login"/>
+      <SubmitButton error={getFieldsError} buttonLabel="Login"/>
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
       <p><Link to={routePath.PASSWORD_RESET}>パスワードをお忘れの方はこちら</Link></p>
       {/* パスワード忘れページへの導線処理 */}
