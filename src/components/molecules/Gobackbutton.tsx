@@ -2,16 +2,18 @@ import React from 'react';
 // reactのコードを機能させる為に必要なコンポーネントの読み込み
 import { Form, Button } from 'antd';
 // antdesignのForm、Buttonコンポーネントの読み込み
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-// historyAPIを使用するための型定義と高階コンポーネントの読み込み
+import { useHistory } from 'react-router-dom';
+// useHistoryAPIを使用するための読み込み
 
 
 
-const GoBackButton: React.FC<RouteComponentProps> = (props) => {
-  // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
+const GoBackButton: React.FC = () => {
+  // 関数コンポーネントの型定義設定
+  const history = useHistory();
+  // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
   const handleGoBack = () => {
-    props.history.goBack()
-    // ブラウザヒストリーを使用して一つ前のページに戻る
+    history.goBack()
+    // 定数historyに代入したブラウザヒストリーを使用して一つ前のページに戻る
   }
   return(
     <Form.Item>
@@ -23,5 +25,5 @@ const GoBackButton: React.FC<RouteComponentProps> = (props) => {
   )
 }
 
-export default withRouter(GoBackButton);
-// PasswordResetコンポーネントのprops.historyを使用するために高階コンポーネントとしてエクスポート
+export default GoBackButton;
+// 他のコンポーネントでも使用できるようにexport
