@@ -1,6 +1,6 @@
 import React from 'react';
 // reactのコードを機能させる為に必要なコンポーネントの読み込み
-import { Form, Button } from 'antd';
+import { Button } from 'antd';
 // antdesignのForm、Buttonコンポーネントの読み込み
 import { useHistory } from 'react-router-dom';
 // useHistoryAPIを使用するための読み込み
@@ -16,12 +16,10 @@ const GoBackButton: React.FC = () => {
     // 定数historyに代入したブラウザヒストリーを使用して一つ前のページに戻る
   }
   return(
-    <Form.Item>
       <Button onClick={handleGoBack}>
-        {/* ボタンパーツのタイプ設定とボタンクリック時に一つ前のページに戻る処理 */}
+        {/* ボタンクリック時に一つ前のページに戻る処理 */}
         戻る
       </Button>
-    </Form.Item>
   )
 }
 
