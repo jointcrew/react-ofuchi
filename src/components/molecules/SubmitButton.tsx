@@ -22,7 +22,6 @@ const SubmitButton: React.FC<ButtonProps> = (props) => {
   // fieldsErrorオブジェクトの名前部分を配列に変換して配列項目にエラーが出るかチェック
   const getFieldsError = props.error;
   // propsを代入
-  console.log(props.error)
 
   return(
       <Button htmlType="submit"  disabled={hasErrors(getFieldsError())}>

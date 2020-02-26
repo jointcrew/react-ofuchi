@@ -14,7 +14,8 @@ import SubmitButton from '../molecules/SubmitButton';
 
 const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義を行いpropsを受け取る
-  useEffect(() => {
+  useEffect((): void => {
+    // returnを返さないためreturnをvoid型で型定義
     props.form.validateFields()
     // 各フォームのエラーと値を取得するvalidateFieldsを使用してフォームに何も入力されていない場合のレンダリング時にバリデーションを発生させてボタンを非活性化
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,6 +23,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   
   const handleSubmit = (e: React.FormEvent): void => {
+    // onSubmitで使用する引数eをReact.FormEvent型、returnを返さないためreturnをvoid型で型定義
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
@@ -42,7 +44,9 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
       <p>パスワードをお忘れの場合はご登録いただいているメールアドレスを下記入力欄に入力していただき送信ボタンをクリックしてください。</p>
       <p>入力いただいたメールアドレス宛に再設定用メールをお送りいたします。</p>
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      {/* propsとして名前と値を同一名称にしたショートハンドのオブジェクトmailformを子コンポーネントを渡す */}
       <SubmitButton error={getFieldsError}  buttonLabel="E-Mail Send"/>
+      {/* propsとしてerrorとbuttonLabelを子コンポーネントに渡す */}
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
     </Form>
   )

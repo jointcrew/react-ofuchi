@@ -20,7 +20,8 @@ import SubmitButton from '../molecules/SubmitButton';
 const LoginForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
 
-  useEffect(() => {
+  useEffect((): void => {
+    // returnを返さないためreturnをvoid型で型定義
     props.form.validateFields()
     // 各フォームのエラーと値を取得するvalidateFieldsを使用してフォームに何も入力されていない場合のレンダリング時にバリデーションを発生させてボタンを非活性化
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,6 +29,7 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   
   const handleSubmit = (e: React.FormEvent): void => {
+    // onSubmitで使用する引数eをReact.FormEvent型、returnを返さないためreturnをvoid型で型定義
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
@@ -48,8 +50,11 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
     <Form onSubmit={handleSubmit}>
       {/* ボタンを押下した際の動作を設定 */}
       <MailForm mailform={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      {/* propsとして名前と値を同一名称にしたショートハンドのオブジェクトmailformを子コンポーネントに渡す */}
       <PasswordForm passform={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      {/* propsとして名前と値を同一名称にしたショートハンドのオブジェクトpassformを子コンポーネントに渡す */}
       <SubmitButton error={getFieldsError} buttonLabel="Login"/>
+      {/* propsとしてerrorとbuttonLabelを子コンポーネントに渡す */}
       {/* コンポーネントを出力してpropsを各コンポーネントに渡す */}
       <p><Link to={routePath.PASSWORD_RESET}>パスワードをお忘れの方はこちら</Link></p>
       {/* パスワード忘れページへの導線処理 */}
