@@ -8,8 +8,11 @@ import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
 interface MailFormProps {
   mailform: {
     getFieldDecorator: <T extends Object = {}>(id: keyof T, options?: GetFieldDecoratorOptions | undefined) => (node: React.ReactNode) => React.ReactNode;
+    // 関数型として型定義（空のオブジェクト型を継承したTの名前の値を第一引数のidの型定義として設定し、第二引数optionsに値が入っている場合はantdesignの型定義GetFieldDecoratorOptions型もしくはundefined型として型定義、returnをさらに関数型として型定義して引数nodeとreturnにレンダリング用の型定義React.ReactNode型を設定）
     getFieldError: (name: string) => string[] | undefined;
+    // 関数型として型定義（引数nameをstring型、returnをstring型の配列もしくはundefined型として型定義）
     isFieldTouched: (name: string) => boolean;
+    // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
   // propsの型定義
 }

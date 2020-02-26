@@ -16,6 +16,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
   // 関数コンポーネントかつantdesign用の型定義を行いpropsを受け取る
   useEffect(() => {
     props.form.validateFields()
+    // 各フォームのエラーと値を取得するvalidateFieldsを使用してフォームに何も入力されていない場合のレンダリング時にバリデーションを発生させてボタンを非活性化
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
