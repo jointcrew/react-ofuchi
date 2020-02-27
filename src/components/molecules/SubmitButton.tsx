@@ -13,10 +13,10 @@ interface ButtonProps {
 
 
 
-const SubmitButton: React.FC<ButtonProps> = (props) => {
-  // 関数コンポーネントかつButtonPropsとして型定義を行いpropsを受け取る
+const SubmitButton: React.FC<ButtonProps> = (props): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型かつButtonPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
   const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
-    // fieldsErrorにあるstring型の引数xをunknown型、returnをboolean型として型定義
+    // fieldsErrorにあるstring型のインデックスxの値をunknown型、returnをboolean型として型定義
     return Object.keys(fieldsError).some(field => fieldsError[field]);
   }
   // fieldsErrorオブジェクトの名前部分を配列に変換して配列項目にエラーが出るかチェック

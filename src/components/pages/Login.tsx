@@ -17,8 +17,8 @@ import SubmitButton from '../molecules/SubmitButton';
 
 
 
-const LoginForm: React.FC<FormComponentProps> = (props) => {
-  // 関数コンポーネントかつantdesign用の型定義設定とpropsの受け取り
+const LoginForm: React.FC<FormComponentProps> = (props): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型かつantdesign用の型定義として、returnをreact側で定義しているJSX.Element型として型定義を行いpropsの受け取る
 
   useEffect((): void => {
     // returnを返さないためreturnをvoid型で型定義
@@ -33,10 +33,10 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
-      // 各フォームのエラーと値を取得
+      // 各フォームのエラーと値を取得するvalidateFieldsを使用して各フォームのboolean型に型定義したerrorsとobject型に型定義したvaluesを取得
       if (!errors) {
         console.log(values);
-        // エラーが発生していなければ各フォームの値（オブジェクト形式）をコンソールに出力
+        // errorsがfalseであれば各フォームのvaluesをコンソールに出力
       }
     });
   };
@@ -63,7 +63,7 @@ const LoginForm: React.FC<FormComponentProps> = (props) => {
 }
 
 const Login = Form.create({ name: 'LoginForm' })(LoginForm);
-// 高階コンポーネントとしてLoginFormコンポーネントにpropsを設定してそれを利用してvalidateを行うための情報取得
+// 高階コンポーネントとしてLoginFormコンポーネントにpropsを設定してLoginに代入
 
 
 

@@ -12,25 +12,25 @@ import SubmitButton from '../molecules/SubmitButton';
 // ボタンコンポーネントの読み込み
 
 
-const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
-  // 関数コンポーネントかつantdesign用の型定義を行いpropsを受け取る
+const PasswordResetForm: React.FC<FormComponentProps> = (props): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型かつantdesign用の型定義として、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
   useEffect((): void => {
     // returnを返さないためreturnをvoid型で型定義
     props.form.validateFields()
     // 各フォームのエラーと値を取得するvalidateFieldsを使用してフォームに何も入力されていない場合のレンダリング時にバリデーションを発生させてボタンを非活性化
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
+  // consoleのwarningをlintの無効化で対応
   
   const handleSubmit = (e: React.FormEvent): void => {
     // onSubmitで使用する引数eをReact.FormEvent型、returnを返さないためreturnをvoid型で型定義
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object) => {
-      // フォームのエラーと値を取得
+      // 各フォームのエラーと値を取得するvalidateFieldsを使用して各フォームのboolean型に型定義したerrorsとobject型に型定義したvaluesを取得
       if (!errors) {
         console.log(values);
-        // エラーが発生していなければ各フォームの値（オブジェクト形式）をコンソールに出力
+        // errorsがfalseであれば各フォームのvaluesをコンソールに出力
       }
     });
   };
@@ -39,6 +39,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
   // propsを分割代入
     return (
     <Form onSubmit={handleSubmit}>
+      {/* ボタンを押下した際の動作を設定 */}
       <GoBackButton />
       {/* 戻るボタンコンポーネントを出力 */}
       <p>パスワードをお忘れの場合はご登録いただいているメールアドレスを下記入力欄に入力していただき送信ボタンをクリックしてください。</p>
@@ -52,7 +53,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props) => {
   )
 }
 const PasswordReset = Form.create({ name: 'PasswordResetForm' })(PasswordResetForm);
-// 高階コンポーネントとしてPasswordResetFormコンポーネントにpropsを設定してそれを利用してvalidateを行うための情報取得
+// 高階コンポーネントとしてPasswordResetFormコンポーネントにpropsを設定してPasswordResetに代入
 
 export default PasswordReset;
 // 他のコンポーネントで使用できるようにexport（元のコンポーネント名ではなく高階コンポーネントとして設定したコンポーネント名でエクスポート）

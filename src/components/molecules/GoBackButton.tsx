@@ -7,13 +7,14 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const GoBackButton: React.FC = () => {
-  // 関数コンポーネントの型定義設定
+const GoBackButton: React.FC = (): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型、戻り値をreact側で定義しているJSX.Element型に型定義設定
   const history = useHistory();
   // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
-  const handleGoBack = () => {
+  const handleGoBack = (): void => {
+    // returnを返さないためreturnをvoid型で型定義
     history.goBack()
-    // 定数historyに代入したブラウザヒストリーを使用して一つ前のページに戻る
+    // historyに代入したブラウザヒストリーを使用して一つ前のページに戻る
   }
   return(
       <Button onClick={handleGoBack}>

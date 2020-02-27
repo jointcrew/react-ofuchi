@@ -17,12 +17,12 @@ interface MailFormProps {
   // propsの型定義
 }
 
-const MailForm: React.FC<MailFormProps> = (props) => {
-  // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
+const MailForm: React.FC<MailFormProps> = (props): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型かつMailFormPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.mailform;
   // 受け取ったpropsを分割代入
   const emailError:  false | string[] | undefined = isFieldTouched('email') && getFieldError('email');
-  // メールインプットフィールドをクリック後エラーが発生した場合にtrueを代入し、そうでない場合はfalseを代入
+  // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
     <Form.Item label="E-mail" validateStatus={emailError ? 'error' : ''} help={emailError || ''}>
       {/* インプットにラベルを設定しemailErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
@@ -37,7 +37,7 @@ const MailForm: React.FC<MailFormProps> = (props) => {
           {
             type: 'email',
             message: 'The input is not valid E-mail!',
-            // インプットタイプとそれにそぐわない入力内容の際に出力するエラーメッセージの設定（〇〇＠〇〇.〇〇の形式）
+            // インプットタイプとそれにそぐわない入力内容の際に出力するエラーメッセージの設定（〇〇＠〇〇.〇〇の形式でなければエラーメッセージ表示）
           },
         ],
       })(<Input placeholder="E-mail"/>)}

@@ -17,12 +17,12 @@ interface PasswordFormProps {
   // propsの型定義
 }
 
-const PasswordForm: React.FC<PasswordFormProps> = (props) => {
-  // 関数コンポーネントかつDecoratorPropsとして型定義を行いpropsを受け取る
+const PasswordForm: React.FC<PasswordFormProps> = (props): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型かつPasswordFormPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.passform;
   // propsを分割代入
   const passwordError: false | string[] | undefined = isFieldTouched("password") && getFieldError("password");
-  // パスワードインプットフィールドをクリック後エラーが発生した場合にtrueを代入し、そうでない場合にfalseを代入
+  // パスワードインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
     <Form.Item label="Password" validateStatus={passwordError ? 'error' : ''} help={passwordError || ''}>
       {/* インプットにラベルを設定しpasswordErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
