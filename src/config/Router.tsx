@@ -13,8 +13,8 @@ import Login from '../components/pages/Login';
 import PasswordReset from '../components/pages/PasswordReset';
 // パスワードリセットページにアクセスした際に表示するコンポーネントの読み込み
 
-export const Router: React.FC = () => {
-  // 関数コンポーネントの型定義設定と他のコンポーネントでも関数を使用できるようにエクスポート
+export const Router: React.FC = (): JSX.Element => {
+  // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義を行い他のコンポーネントでも関数を使用できるようにエクスポート
   return(
     <>
         <Route exact path={routePath.PAGE_TOP} component={Main} />

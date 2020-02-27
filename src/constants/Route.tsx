@@ -1,4 +1,13 @@
-export const routePath = {
+interface RoutePath {
+    PAGE_TOP: string;
+    GALLERY: string;
+    LOGIN: string;
+    PASSWORD_RESET: string;
+}
+// URLパス用のオブジェクト要素の値の型定義ß
+
+
+export const routePath: RoutePath = {
   PAGE_TOP : "/",
   GALLERY : "/gallery",
   LOGIN: "/login",
