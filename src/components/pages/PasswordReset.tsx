@@ -26,7 +26,7 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props): JSX.Element => 
     // onSubmitで使用する引数eをReact.FormEvent型、returnを返さないためreturnをvoid型で型定義
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
-    props.form.validateFields((errors: boolean, values: object) => {
+    props.form.validateFields((errors: boolean, values: object): void => {
       // 各フォームのエラーと値を取得するvalidateFieldsを使用して各フォームのboolean型に型定義したerrorsとobject型に型定義したvaluesを取得
       if (!errors) {
         console.log(values);
