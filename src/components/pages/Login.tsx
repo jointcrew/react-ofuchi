@@ -12,7 +12,7 @@ import MailForm from '../molecules/MailForm';
 // メールアドレス用のインプットコンポーネントの読み込み
 import PasswordForm from '../molecules/PasswordForm';
 // パスワード用のインプットコンポーネントの読み込み
-import SubmitButton from '../molecules/SubmitButton';
+import SubmitButton from '../atoms/SubmitButton';
 // ボタンコンポーネントの読み込み
 
 

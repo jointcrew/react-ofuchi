@@ -4,11 +4,11 @@ import { Form } from 'antd';
 // antdesignのFormコンポーネントの読み込み
 import { FormComponentProps } from 'antd/lib/form';
 // antdesignの型定義読み込み
-import GoBackButton from '../molecules/GoBackButton';
+import GoBackButton from '../atoms/GoBackButton';
 // 戻るボタン用のコンポーネントの読み込み
 import MailForm from '../molecules/MailForm';
 // メールアドレス用のインプットコンポーネントの読み込み
-import SubmitButton from '../molecules/SubmitButton';
+import SubmitButton from '../atoms/SubmitButton';
 // ボタンコンポーネントの読み込み
 
 
