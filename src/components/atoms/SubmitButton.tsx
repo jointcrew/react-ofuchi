@@ -5,7 +5,7 @@ import { Button } from 'antd';
 
 interface ButtonProps {
   error: (names?: string[] | undefined) => Record<string, string[] | undefined>
-  // 関数型として型定義（引数nameに値が入っている場合はstring型の配列もしくはundefined型、returnのstring型の配列もしくはundefined型をstring型として型定義）
+  // 関数型として型定義（引数nameに値が入っている場合はstring型の配列もしくはundefined型、returnのオブジェクトのキーをstring型、値をstring型の配列もしくはundefined型として型定義）
   buttonLabel: string
   // 親コンポーネントから受け取るpropsをstring型として型定義
   // propsの型定義

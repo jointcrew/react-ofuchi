@@ -15,7 +15,7 @@ import SubmitButton from '../atoms/SubmitButton';
 const PasswordResetForm: React.FC<FormComponentProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型かつantdesign用の型定義として、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
   useEffect((): void => {
-    // returnを返さないためreturnをvoid型で型定義
+    // return文がなくundefinedとなるためreturnをvoid型で型定義
     props.form.validateFields()
     // 各フォームのエラーと値を取得するvalidateFieldsを使用してフォームに何も入力されていない場合のレンダリング時にバリデーションを発生させてボタンを非活性化
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,11 +23,11 @@ const PasswordResetForm: React.FC<FormComponentProps> = (props): JSX.Element => 
   // consoleのwarningをlintの無効化で対応
   
   const handleSubmit = (e: React.FormEvent): void => {
-    // onSubmitで使用する引数eをReact.FormEvent型、returnを返さないためreturnをvoid型で型定義
+    // onSubmitで使用する引数eをReact.FormEvent型、return文がなくundefinedとなるためreturnをvoid型で型定義
     e.preventDefault();
     // 規定のボタン押下処理（画面遷移処理）をブロック
     props.form.validateFields((errors: boolean, values: object): void => {
-      // 各フォームのエラーと値を取得するvalidateFieldsを使用して各フォームのboolean型に型定義したerrorsとobject型に型定義したvaluesを取得
+      // 各フォームのエラーと値を取得するvalidateFieldsを使用して各フォームのboolean型に型定義したerrorsとobject型に型定義したvaluesを取得　return文がなくundefinedとなるためreturnをvoid型で型定義
       if (!errors) {
         console.log(values);
         // errorsがfalseであれば各フォームのvaluesをコンソールに出力

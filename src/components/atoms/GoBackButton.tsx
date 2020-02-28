@@ -12,7 +12,7 @@ const GoBackButton: React.FC = (): JSX.Element => {
   const history = useHistory();
   // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
   const handleGoBack = (): void => {
-    // returnを返さないためreturnをvoid型で型定義
+    // return文がなくundefinedとなるためreturnをvoid型で型定義
     history.goBack()
     // historyに代入したブラウザヒストリーを使用して一つ前のページに戻る
   }
