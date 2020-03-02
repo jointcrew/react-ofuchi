@@ -7,7 +7,7 @@ import { FormComponentProps } from 'antd/es/form';
 import { Link, useHistory } from 'react-router-dom';
 // ルーティング用コンポーネントの読み込み
 import { routePath } from '../../constants/Route';
-// ページUR用Lコンポーネントの読み込み
+// ページURL用コンポーネントの読み込み
 import MailForm from '../molecules/MailForm';
 // メールアドレス用のインプットコンポーネントの読み込み
 import PasswordForm from '../molecules/PasswordForm';
