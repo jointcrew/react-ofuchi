@@ -19,7 +19,11 @@ export const Router: React.FC = (): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義を行い他のコンポーネントでも関数を使用できるようにエクスポート
   return(
     <>
-        <Route component={Header} />
+        <Route exact path={[
+          routePath.PAGE_TOP,
+          `${routePath.GALLERY}/:id`
+        ]} component={Header} />
+        {/* pathで指定しているURL（トップページ・ギャラリーページ）にルートした場合のみHeaderコンポーネントを表示 */}
         <Route exact path={routePath.PAGE_TOP} component={Main} />
         {/* path属性で指定しているURLにアクセスした場合のみMainコンポーネントの内容を表示するようにルートを設定 */}
         <Route exact path={`${routePath.GALLERY}/:id`} component={List}/>
