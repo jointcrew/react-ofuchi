@@ -22,7 +22,7 @@ export const Router: React.FC = (): JSX.Element => {
       <Route exact path={routePath.PAGE_DEFAULT}>
         {/* pathで指定しているURLにアクセスした場合のみに下記を実行 */}
         <Redirect to={routePath.LOGIN}/>
-        {/* Routeコンポーネントのpathで指定しているURLにアクセスした場合のみ、toで指定したURLにルーティング */}
+        {/* 上記Routeコンポーネントのpathで指定しているURLにアクセスした場合のみ、toで指定したURLにルーティング */}
       </Route>
       <Route exact path={[
         routePath.PAGE_TOP,
@@ -37,6 +37,11 @@ export const Router: React.FC = (): JSX.Element => {
       {/* path属性で指定している文字列を含むURLにアクセスした際にLoginコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.PASSWORD_RESET} component={PasswordReset}/>
       {/* path属性で指定している文字列を含むURLにアクセスした際にPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
+      <Route>
+      {/* 上記ルーティング設定のpathで指定指定ないURLにアクセスした場合のみに下記を実行 */}
+        <Redirect to={routePath.PAGE_DEFAULT}/>
+        {/* toで指定したURLにルーティング */}
+      </Route>
     </>
   )
 
