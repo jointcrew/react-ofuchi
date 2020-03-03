@@ -28,20 +28,15 @@ export const Router: React.FC = (): JSX.Element => {
         routePath.PAGE_TOP,
         `${routePath.GALLERY}/:id`
       ]} component={Header} />
-      {/* pathで指定しているURL（トップページ・ギャラリーページ）にルートした場合のみHeaderコンポーネントを表示 */}
+      {/* path属性で指定しているURL（トップページ・ギャラリーページ）にルートした場合のみHeaderコンポーネントを表示 */}
       <Route exact path={routePath.PAGE_TOP} component={Main} />
       {/* path属性で指定しているURLにアクセスした場合のみMainコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={`${routePath.GALLERY}/:id`} component={List}/>
-      {/* path属性で指定している文字列を含むURL（:idの部分については別コンポーネントで指定）にアクセスした際にListコンポーネントの内容を表示するようにルートを設定 */}
-      <Route path={routePath.LOGIN} component={Login}/>
-      {/* path属性で指定している文字列を含むURLにアクセスした際にLoginコンポーネントの内容を表示するようにルートを設定 */}
+      {/* path属性で指定しているURL（:idの部分については別コンポーネントで指定）にアクセスした場合のみListコンポーネントの内容を表示するようにルートを設定 */}
+      <Route exact path={routePath.LOGIN} component={Login}/>
+      {/* path属性で指定しているURLにアクセスした場合のみLoginコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.PASSWORD_RESET} component={PasswordReset}/>
-      {/* path属性で指定している文字列を含むURLにアクセスした際にPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
-      <Route>
-      {/* 上記ルーティング設定のpathで指定指定ないURLにアクセスした場合のみに下記を実行 */}
-        <Redirect to={routePath.PAGE_DEFAULT}/>
-        {/* toで指定したURLにルーティング */}
-      </Route>
+      {/* path属性で指定しているURLにアクセスした場合のみPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
     </>
   )
 
