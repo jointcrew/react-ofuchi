@@ -1,5 +1,5 @@
 interface RoutePath {
-    PAGE_DEFAULT: string,
+    ROOT: string,
     PAGE_TOP: string;
     GALLERY: string;
     LOGIN: string;
@@ -9,7 +9,7 @@ interface RoutePath {
 
 
 export const routePath: RoutePath = {
-  PAGE_DEFAULT: "/",
+  ROOT : "/",
   PAGE_TOP : "/top",
   GALLERY : "/gallery",
   LOGIN: "/login",
