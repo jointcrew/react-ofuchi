@@ -42,3 +42,4 @@ const Header: React.FC = (): JSX.Element => {
 }
 
 export default Header;
+// 他のコンポーネントで使用できるようにexport
