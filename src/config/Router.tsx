@@ -13,6 +13,7 @@ import List from '../components/pages/List';
 import Login from '../components/pages/Login';
 // ログインページにアクセスした際に表示するコンポーネントの読み込み
 import PasswordReset from '../components/pages/PasswordReset';
+import TableListContainer from 'containers/TableListContainer';
 // パスワードリセットページにアクセスした際に表示するコンポーネントの読み込み
 
 export const Router: React.FC = (): JSX.Element => {
@@ -32,6 +33,7 @@ export const Router: React.FC = (): JSX.Element => {
       {/* path属性で指定しているURLにアクセスした場合のみLoginコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.PASSWORD_RESET} component={PasswordReset}/>
       {/* path属性で指定しているURLにアクセスした場合のみPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
+      <Route exact path={routePath.TABLE_LIST} component={TableListContainer}/>
       <Route>
         {/* 上記Routeコンポーネントで指定しているURL以外にアクセスした場合のみ下記を実行 */}
         <Redirect to={routePath.LOGIN}/>
