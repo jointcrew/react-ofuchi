@@ -4,10 +4,10 @@ import { Form } from 'antd';
 // antdesignのFormコンポーネントの読み込み
 import { FormComponentProps } from 'antd/es/form';
 // antdesignの型定義読み込み
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // ルーティング用コンポーネントの読み込み
 import { routePath } from '../../constants/Route';
-// ページUR用Lコンポーネントの読み込み
+// ページURL用コンポーネントの読み込み
 import MailForm from '../molecules/MailForm';
 // メールアドレス用のインプットコンポーネントの読み込み
 import PasswordForm from '../molecules/PasswordForm';
@@ -27,7 +27,8 @@ const LoginForm: React.FC<FormComponentProps> = (props): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
-  
+  const history = useHistory();
+  // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
   const handleSubmit = (e: React.FormEvent): void => {
     // onSubmitで使用する引数eをReact.FormEvent型、return文がなくundefinedとなるためreturnをvoid型で型定義
     e.preventDefault();
@@ -37,6 +38,8 @@ const LoginForm: React.FC<FormComponentProps> = (props): JSX.Element => {
       if (!errors) {
         console.log(values);
         // errorsがfalseであれば各フォームのvaluesをコンソールに出力
+        history.push(routePath.PAGE_TOP);
+        // ボタン押下時に指定したURLへ遷移するように設定
       }
     });
   };

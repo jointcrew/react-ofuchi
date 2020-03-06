@@ -4,11 +4,11 @@ interface RoutePath {
     LOGIN: string;
     PASSWORD_RESET: string;
 }
-// URLパス用のオブジェクト要素の値の型定義ß
+// URLパス用のオブジェクト要素の値の型定義
 
 
 export const routePath: RoutePath = {
-  PAGE_TOP : "/",
+  PAGE_TOP : "/top",
   GALLERY : "/gallery",
   LOGIN: "/login",
   PASSWORD_RESET: "/password-reset",
