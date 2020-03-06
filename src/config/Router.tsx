@@ -34,6 +34,7 @@ export const Router: React.FC = (): JSX.Element => {
       <Route exact path={routePath.PASSWORD_RESET} component={PasswordReset}/>
       {/* path属性で指定しているURLにアクセスした場合のみPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.TABLE_LIST} component={TableListContainer}/>
+      {/* path属性で指定しているURLにアクセスした場合のみTableListContainerコンポーネントの内容を表示するようにルートを設定 */}
       <Route>
         {/* 上記Routeコンポーネントで指定しているURL以外にアクセスした場合のみ下記を実行 */}
         <Redirect to={routePath.LOGIN}/>
