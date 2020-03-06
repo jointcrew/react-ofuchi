@@ -5,19 +5,29 @@ import { Table } from "antd";
 
 interface ListDataProps {
   key: number;
+  // 数値型として型定義
   name: string;
+  // 文字列型として型定義
   age: number,
+  // 数値型として型定義
   address: string;
+  // 文字列型として型定義
   gender: string;
+  // 文字列型として型定義
   job: string;
+  // 文字列型として型定義
 }
 // TableListContainerから受け取るprops.listDataの値の型定義
 
 interface ColumnsDataProps {
   title: string;
+  // 文字列型として型定義
   dataIndex: string;
+  // 文字列型として型定義
   key: string;
+  // 文字列型として型定義
   sorter: (a: unknown, b: unknown) => number;
+  // 引数a、bをunknown型、リターンを数値型として持つ関数として型定義
 }
 // TableListContainerから受け取るprops.columnsDataの値の型定義
 
