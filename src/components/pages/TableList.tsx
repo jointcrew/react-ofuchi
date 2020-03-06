@@ -1,17 +1,34 @@
 import React from "react";
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Table } from "antd";
-import { ColumnProps } from "antd/lib/table";
 // antdesignのTableコンポーネントの読み込み
 
 interface ListDataProps {
-  listData: unknown[];
-  // unknown型の配列として型定義
-  columnsData: ColumnProps<unknown>[];
-  // antdesignで定義しているColumnPropsのジェネリクスの型引数をunknown型に設定し、unknown型の配列として型定義
+  key: number;
+  name: string;
+  age: number,
+  address: string;
+  gender: string;
+  job: string;
+}
+// TableListContainerから受け取るprops.listDataの値の型定義
+
+interface ColumnsDataProps {
+  title: string;
+  dataIndex: string;
+  key: string;
+  sorter: (a: unknown, b: unknown) => number;
+}
+// TableListContainerから受け取るprops.columnsDataの値の型定義
+
+interface TableDataProps {
+  listData: ListDataProps[];
+  // ListDataPropsで定義した値の型定義を持つ配列として型定義
+  columnsData: ColumnsDataProps[];
+  // ColumnsDataPropで定義した値の型定義を持つ配列として型定義
 }
 
-const TableList: React.FC<ListDataProps> = (props): JSX.Element => {
+const TableList: React.FC<TableDataProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型の型定義かつinterFaceで設定したListDataPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsの受け取る
   return(
     <Table dataSource={props.listData} columns={props.columnsData} pagination={false}/>
