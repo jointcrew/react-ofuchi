@@ -2,11 +2,15 @@ import React from "react";
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import TableList from "components/pages/TableList";
 // 一覧表示用のコンポーネントを読み込み
+import { useHistory } from "react-router-dom";
+// useHistoryAPIを使用するための読み込み
+import { routePath } from "constants/Route";
+// 各コンポーネントへのルーティング用URLパスの読み込み
+import TableListJson from "./TableList.json";
+// jsonデータの読み込み
 
 const TableListContainer: React.FC = ():JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型の型定義として、returnをreact側で定義しているJSX.Element型として型定義を行う
-  const json = require('./TableList.json');
-  // json形式のデータをjsonに代入
 
   const columnsData = [
     {
@@ -33,6 +37,8 @@ const TableListContainer: React.FC = ():JSX.Element => {
       dataIndex: "age",
       key: "age",
       sorter: (a, b) => a.age - b.age
+      // jsonに格納されているageはnumber型の値のため単純にa.ageからb.ageを引いた数を返り値として持たせる
+      // 返り値0未満の場合はa.nameをb.nameよりも前の順番にソートし、1以上の場合はa.nameをb.nameよりも後の順番にソート、0の場合は同一の値のため順番のソートは行わない
     },
     {
       title: "住所",
@@ -98,8 +104,13 @@ const TableListContainer: React.FC = ():JSX.Element => {
   // key：各列ごとに設定するキー
   // sorter：ソートの基準を決める比較関数を設定
 
+  const history = useHistory();
+  // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
+  const rowClick = () => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`);
+  // 特定のアクション時（今回はTableList内の一覧表の各行をクリック）に指定したURLへ遷移するように設定
+
   return(
-    <TableList listData={json} columnsData={columnsData}/>
+    <TableList listData={TableListJson} columnsData={columnsData} clickAction={rowClick}/>
     // TableListコンポーネントにpropsを渡して出力
   )
 }
