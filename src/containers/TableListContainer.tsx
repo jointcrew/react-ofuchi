@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 // useHistoryAPIを使用するための読み込み
 import { routePath } from "constants/Route";
 // 各コンポーネントへのルーティング用URLパスの読み込み
-import TableListJson from "./TableList.json";
+import TableListData from "./TableListData.json";
 // jsonデータの読み込み
 
 const TableListContainer: React.FC = ():JSX.Element => {
@@ -36,9 +36,21 @@ const TableListContainer: React.FC = ():JSX.Element => {
       title: "年齢",
       dataIndex: "age",
       key: "age",
-      sorter: (a, b) => a.age - b.age
-      // jsonに格納されているageはnumber型の値のため単純にa.ageからb.ageを引いた数を返り値として持たせる
-      // 返り値0未満の場合はa.nameをb.nameよりも前の順番にソートし、1以上の場合はa.nameをb.nameよりも後の順番にソート、0の場合は同一の値のため順番のソートは行わない
+      sorter: (a, b) :number => {
+        if(a.age < b.age){
+          // jsonデータ上ではageもstring型のため他と同じ比較関数を実装
+          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.ageの文字列よりもb.ageの文字列の方が後ろの順番である場合に下記処理を実行
+          return -1;
+          // 返り値として0未満の数値を渡すことによりa.ageをb.ageよりも前の順番にソートする
+        }
+        if(a.age > b.age){
+          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.ageの文字列よりもb.ageの文字列の方が前の順番である場合に下記処理を実行
+          return 1;
+          // 返り値として1以上の数値を渡すことによりa.ageをb.ageよりも後の順番にソートする
+        }
+        return 0;
+        // 上記if文に当てはまらなかった場合はa.ageとb.ageが同一の値であるため順番のソートを行わない
+      }
     },
     {
       title: "住所",
@@ -110,7 +122,7 @@ const TableListContainer: React.FC = ():JSX.Element => {
   // 特定のアクション時（今回はTableList内の一覧表の各行をクリック）に指定したURLへ遷移するように設定
 
   return(
-    <TableList listData={TableListJson} columnsData={columnsData} clickAction={rowClick}/>
+    <TableList listData={TableListData} columnsData={columnsData} clickAction={rowClick}/>
     // TableListコンポーネントにpropsを渡して出力
   )
 }

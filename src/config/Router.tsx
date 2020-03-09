@@ -25,9 +25,11 @@ export const Router: React.FC = (): JSX.Element => {
     <>
       <Route exact path={[
         routePath.PAGE_TOP,
-        `${routePath.GALLERY}/:id`
+        `${routePath.GALLERY}/:id`,
+        routePath.TABLE_LIST,
+        `${routePath.TABLE_LIST}${routePath.DETAIL}`
       ]} component={Header} />
-      {/* path属性で指定しているURL（トップページ・ギャラリーページ）にルートした場合のみHeaderコンポーネントを表示（Headerコンポーネントを上部に出力させるため先に記載） */}
+      {/* path属性で指定しているURL（トップページ・ギャラリーページ・Table一覧ページ・Table詳細ページ）にルートした場合のみHeaderコンポーネントを表示（Headerコンポーネントを上部に出力させるため先に記載） */}
       <Route exact path={routePath.PAGE_TOP} component={Main} />
       {/* path属性で指定しているURLにアクセスした場合のみMainコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={`${routePath.GALLERY}/:id`} component={List}/>

@@ -3,12 +3,12 @@ import React from "react";
 import { Table } from "antd";
 // antdesignのTableコンポーネントの読み込み
 
-export interface ListDataProps {
+interface ListDataProps {
   key: string;
   // 文字列型として型定義
   name: string;
   // 文字列型として型定義
-  age: string,
+  age: string;
   // 文字列型として型定義
   address: string;
   // 文字列型として型定義
@@ -42,7 +42,7 @@ interface TableDataProps {
 }
 
 const TableList: React.FC<TableDataProps> = (props): JSX.Element => {
-  // 関数コンポーネントをreact側で定義しているReact.FC型の型定義かつinterFaceで設定したListDataPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsの受け取る
+  // 関数コンポーネントをreact側で定義しているReact.FC型の型定義かつinterFaceで設定したTableDataPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsの受け取る
   return(
     <Table dataSource={props.listData} columns={props.columnsData} pagination={false} onRow={() => {
       return {
