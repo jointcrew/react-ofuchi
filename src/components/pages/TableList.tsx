@@ -2,40 +2,14 @@ import React from "react";
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { Table } from "antd";
 // antdesignのTableコンポーネントの読み込み
-
-interface ListDataProps {
-  key: string;
-  // 文字列型として型定義
-  name: string;
-  // 文字列型として型定義
-  age: string;
-  // 文字列型として型定義
-  address: string;
-  // 文字列型として型定義
-  gender: string;
-  // 文字列型として型定義
-  job: string;
-  // 文字列型として型定義
-}
-// TableListContainerから受け取るprops.listDataの値の型定義
-
-interface ColumnsDataProps {
-  title: string;
-  // 文字列型として型定義
-  dataIndex: string;
-  // 文字列型として型定義
-  key: string;
-  // 文字列型として型定義
-  sorter: (a: ListDataProps, b: ListDataProps) => number;
-  // 引数a、bをListDataPropsで定義した型、returnを数値型として持つ関数として型定義
-}
-// TableListContainerから受け取るprops.columnsDataの値の型定義
+import { ListData, ColumnsData } from "containers/TableListContainer";
+// TableListContainerから型定義のinterfaceをimport
 
 interface TableDataProps {
-  listData: ListDataProps[];
-  // ListDataPropsで定義した値の型定義を持つ配列として型定義
-  columnsData: ColumnsDataProps[];
-  // ColumnsDataPropで定義した値の型定義を持つ配列として型定義
+  listData: ListData[];
+  // TableListContainerからimportしたListDataで定義した値の型定義を持つ配列として型定義
+  columnsData: ColumnsData[];
+  // TableListContainerからimportしたColumnsDataで定義した値の型定義を持つ配列として型定義
   clickAction: () => void;
   // 関数型として型定義、return文がなくundefinedとなるためreturnをvoid型で型定義
   // TableListContainerから受け取るprops.clickActionの型定義
