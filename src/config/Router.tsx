@@ -14,6 +14,10 @@ import Login from '../components/pages/Login';
 // ログインページにアクセスした際に表示するコンポーネントの読み込み
 import PasswordReset from '../components/pages/PasswordReset';
 // パスワードリセットページにアクセスした際に表示するコンポーネントの読み込み
+import TableListContainer from 'containers/TableListContainer';
+// 一覧ページにアクセスした際に表示するコンポーネントの読み込み
+import TableListDetail from 'components/pages/TableListDetail';
+// 一覧ページから詳細ページにアクセスした際に表示するコンポーネントの読み込み
 
 export const Router: React.FC = (): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義を行い他のコンポーネントでも関数を使用できるようにエクスポート
@@ -21,9 +25,11 @@ export const Router: React.FC = (): JSX.Element => {
     <>
       <Route exact path={[
         routePath.PAGE_TOP,
-        `${routePath.GALLERY}/:id`
+        `${routePath.GALLERY}/:id`,
+        routePath.TABLE_LIST,
+        `${routePath.TABLE_LIST}${routePath.DETAIL}`
       ]} component={Header} />
-      {/* path属性で指定しているURL（トップページ・ギャラリーページ）にルートした場合のみHeaderコンポーネントを表示（Headerコンポーネントを上部に出力させるため先に記載） */}
+      {/* path属性で指定しているURL（トップページ・ギャラリーページ・Table一覧ページ・Table詳細ページ）にルートした場合のみHeaderコンポーネントを表示（Headerコンポーネントを上部に出力させるため先に記載） */}
       <Route exact path={routePath.PAGE_TOP} component={Main} />
       {/* path属性で指定しているURLにアクセスした場合のみMainコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={`${routePath.GALLERY}/:id`} component={List}/>
@@ -32,6 +38,10 @@ export const Router: React.FC = (): JSX.Element => {
       {/* path属性で指定しているURLにアクセスした場合のみLoginコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.PASSWORD_RESET} component={PasswordReset}/>
       {/* path属性で指定しているURLにアクセスした場合のみPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
+      <Route exact path={routePath.TABLE_LIST} component={TableListContainer}/>
+      {/* path属性で指定しているURLにアクセスした場合のみTableListContainerコンポーネントの内容を表示するようにルートを設定 */}
+      <Route exact path={`${routePath.TABLE_LIST}${routePath.DETAIL}`} component={TableListDetail}/>
+      {/* path属性で指定しているURLにアクセスした場合のみTableListDetailコンポーネントの内容を表示するようにルートを設定 */}
       <Route>
         {/* 上記Routeコンポーネントで指定しているURL以外にアクセスした場合のみ下記を実行 */}
         <Redirect to={routePath.LOGIN}/>

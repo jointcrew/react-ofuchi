@@ -34,6 +34,7 @@ const Header: React.FC = (): JSX.Element => {
             state: {listNum: 3 }
           }}>location4</Link></li>
           {/* toで指定したURLパスへのルーティング動作とURLパスと紐付いて出力されるコンポーネントへpropsとしてstateの受け渡し */}
+          <li><Link to={routePath.TABLE_LIST}>list</Link></li>
         </ul>
       </div>
     </header>
