@@ -14,20 +14,21 @@ interface SelectFormProps {
     isFieldTouched: (name: string) => boolean;
     // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
-  selectData: string
+  selectData: string;
+  selectName: string;
   // propsの型定義
 }
 
 const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
-  const Option = Select;
+  const { Option } = Select;
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.selectForm;
   // 受け取ったpropsを分割代入
-  const selectError:  false | string[] | undefined = isFieldTouched('select') && getFieldError('select');
+  const selectError:  false | string[] | undefined = isFieldTouched(`${props.selectName}select`) && getFieldError(`${props.selectName}select`);
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
 
   return(
     <Form.Item validateStatus={selectError ? 'error' : ''} help={selectError || ''}>
-        {getFieldDecorator('select', {
+        {getFieldDecorator(`${props.selectName}select`, {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [
           {

@@ -1,27 +1,50 @@
 [
   {
     "key": 1,
-    "name": "John",
+    "name": "麻生",
     "age": 33,
-    "address": "Tokyo, Japan",
-    "gender": "male",
+    "birthday": "2003/01/22",
+    "smoker": true,
     "job": "cheff"
   },
   {
     "key": 2,
-    "name": "Sara",
+    "name": "中村",
     "age": 23,
-    "address": "Kanagawa, Japan",
-    "gender": "female",
+    "birthday": "2003/01/22",
+    "smoker": false,
     "job": "model"
   },
   {
     "key": 3,
-    "name": "Alex",
+    "name": "茶谷",
     "age": 44,
-    "address": "Osaka, Japan",
-    "gender": "male",
+    "birthday": "2003/01/22",
+    "smoker": false,
+    "job": "actor"
+  },
+  {
+    "key": 4,
+    "name": "江本",
+    "age": 44,
+    "birthday": "2003/01/22",
+    "smoker": false,
+    "job": "actor"
+  },
+  {
+    "key": 5,
+    "name": "袴田",
+    "age": 44,
+    "birthday": "2003/01/22",
+    "smoker": false,
+    "job": "actor"
+  },
+  {
+    "key": 6,
+    "name": "大渕",
+    "age": 44,
+    "birthday": "2002/04/30",
+    "smoker": false,
     "job": "actor"
   }
-
 ]

@@ -18,7 +18,7 @@ export interface ListData {
   // 数値型として型定義
   birthday: string;
   // 文字列型として型定義
-  gender: string;
+  smoker: boolean;
   // 文字列型として型定義
   job: string;
   // 文字列型として型定義
@@ -87,22 +87,22 @@ const TableListContainer: React.FC = ():JSX.Element => {
       }
     },
     {
-      title: "性別",
-      dataIndex: "gender",
-      key: "gender",
+      title: "喫煙",
+      dataIndex: "smoker",
+      key: "smoker",
       sorter: (a, b) => {
-        if(a.gender < b.gender){
-          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.genderの文字列よりもb.genderの文字列の方が後ろの順番である場合に下記処理を実行
+        if(a.smoker < b.smoker){
+          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.smokerの文字列よりもb.smokerの文字列の方が後ろの順番である場合に下記処理を実行
           return -1;
-          // 返り値として0未満の数値を渡すことによりa.genderをb.genderよりも前の順番にソートする
+          // 返り値として0未満の数値を渡すことによりa.smokerをb.smokerよりも前の順番にソートする
         }
-        if(a.gender > b.gender){
-          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.genderの文字列よりもb.genderの文字列の方が前の順番である場合に下記処理を実行
+        if(a.smoker > b.smoker){
+          // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.smokerの文字列よりもb.smokerの文字列の方が前の順番である場合に下記処理を実行
           return 1;
-          // 返り値として1以上の数値を渡すことによりa.genderをgenderよりも後の順番にソートする
+          // 返り値として1以上の数値を渡すことによりa.smokerをsmokerよりも後の順番にソートする
         }
         return 0;
-        // 上記if文に当てはまらなかった場合はa.genderとb.genderが同一の値であるため順番のソートを行わない
+        // 上記if文に当てはまらなかった場合はa.smokerとb.smokerが同一の値であるため順番のソートを行わない
       }
     },
     {
@@ -133,7 +133,7 @@ const TableListContainer: React.FC = ():JSX.Element => {
 
   const history = useHistory();
   // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
-  const rowClick = () => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`, TableListData);
+  const rowClick = () => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`, {tableListData: TableListData});
   // 特定のアクション時（今回はTableList内の一覧表の各行をクリック）に指定したURLへ遷移するように設定
 
   return(

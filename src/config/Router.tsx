@@ -16,7 +16,7 @@ import PasswordReset from '../components/pages/PasswordReset';
 // パスワードリセットページにアクセスした際に表示するコンポーネントの読み込み
 import TableListContainer from 'containers/TableListContainer';
 // 一覧ページにアクセスした際に表示するコンポーネントの読み込み
-import TableListDetail from 'components/pages/TableListDetail';
+import TableListDetailContainer from 'containers/TableListDetailContainer';
 // 一覧ページから詳細ページにアクセスした際に表示するコンポーネントの読み込み
 
 export const Router: React.FC = (): JSX.Element => {
@@ -40,7 +40,7 @@ export const Router: React.FC = (): JSX.Element => {
       {/* path属性で指定しているURLにアクセスした場合のみPasswordResetコンポーネントの内容を表示するようにルートを設定 */}
       <Route exact path={routePath.TABLE_LIST} component={TableListContainer}/>
       {/* path属性で指定しているURLにアクセスした場合のみTableListContainerコンポーネントの内容を表示するようにルートを設定 */}
-      <Route exact path={`${routePath.TABLE_LIST}${routePath.DETAIL}`} component={TableListDetail}/>
+      <Route exact path={`${routePath.TABLE_LIST}${routePath.DETAIL}`} component={TableListDetailContainer}/>
       {/* path属性で指定しているURLにアクセスした場合のみTableListDetailコンポーネントの内容を表示するようにルートを設定 */}
       <Route>
         {/* 上記Routeコンポーネントで指定しているURL以外にアクセスした場合のみ下記を実行 */}
