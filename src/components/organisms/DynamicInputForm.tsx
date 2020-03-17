@@ -26,7 +26,7 @@ const DynamicInputForm = (props:DynamicFormProps):JSX.Element => {
   getFieldDecorator('keys', { initialValue: [] });
   const keys = getFieldValue('keys');
   // keysに文字列keysとして設定したフォームフィールドの値を代入
-  const formItems = keys.map((k: string | number | undefined, index: number) => (
+  const formItems = keys.map((k: unknown, index: number) => (
     // formItemにkeysの値でmap関数を使用して生成した配列を代入
     <Form.Item label={"comment"} key={index + 1} >
       {/* labelとkeyを設定

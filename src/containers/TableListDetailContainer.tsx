@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import { useLocation } from "react-router-dom";
 // hooksでロケーションを取得するためのコンポーネントの読み込み
@@ -25,6 +25,8 @@ import TableListData from "./TableListData.json";
 
 const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義
+  const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched, getFieldValue, setFieldsValue } = props.form;
+  // 高階コンポーネントとして設定したpropsを分割代入
 
   useEffect((): void => {
     // return文がなくundefinedとなるためreturnをvoid型で型定義
@@ -36,7 +38,45 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   const location = useLocation();
   // hooksのuseLocationを使用してブラウザロケーションをlocationに代入
   console.log(location.state);
-  console.log(TableListData[0].smoker);
+
+  const userData = TableListData.map(x => TableListData[x.key - 1].name);
+  const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
+  console.log(userData, booleanData);
+
+  const remove = (k: unknown): void => {
+    // 動的にフォームを削除する関数removeを定義　引数kをunknown型、return文がなくundefinedとなるためreturnをvoid型で型定義
+    const keys = getFieldValue('keys');
+    // 文字列keysとして設定されたフォームフィールドの値を取得してkeysに代入
+    if (keys.length === 0) {
+      // もしkeysが１つも設定されていない場合は下記を実行
+      return;
+      // 追加の処理をせずそのままリターンを返す
+    }
+    setFieldsValue({
+      // setFieldValueにフィールドネームと値を設定
+      keys: keys.filter((key: unknown) => key !== k),
+      // フィールドネームをkeys、値をkeysの値から引数keyと関数removeで設定した引数kが一致しない場合のみフィルター関数で抽出して設定
+    });
+  };
+
+  const [id, setId] = useState(0);
+  // 関数addで使用するidを設定
+
+  const add = (): void => {
+    // 動的にフォームを追加する関数addを定義　return文がなくundefinedとなるためreturnをvoidで型定義
+    const keys = getFieldValue('keys');
+    // 文字列keysとして設定されたフォームフィールドの値を取得してkeysに代入
+    setId(id + 1);
+    // クリックされるごとにidの数値を1づつ増やすように設定
+    const nextKeys = keys.concat(id);
+    // nextKeysにkeysとidを連結したものを代入
+    setFieldsValue({
+      // setFieldValueにフィールドネームと値を設定
+      keys: nextKeys,
+      // フィールドネームをkeys、値をnextKeysとして設定
+    });
+    console.log(keys)
+  };
 
   const handleSubmit = (e: React.FormEvent): void => {
     // onSubmitで使用する引数eをReact.FormEvent型、return文がなくundefinedとなるためreturnをvoid型で型定義
@@ -53,58 +93,21 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
 
 
 
-  const remove = (k: unknown): void => {
-    // 動的にフォームを削除する関数removeを定義　引数kをunknown型、return文がなくundefinedとなるためreturnをvoid型で型定義
-    const keys = props.form.getFieldValue('keys');
-    // 文字列keysとして設定されたフォームフィールドの値を取得
-    // keysに高階コンポーネントとして設定したpropsを代入
-    if (keys.length === 0) {
-      // もしkeysが１つも設定されていない場合は下記を実行
-      return;
-      // 追加の処理をせずそのままリターンを返す
-    }
-    props.form.setFieldsValue({
-      // 高階コンポーネントとして設定したpropsのsetFieldValueにフィールドネームと値を設定
-      keys: keys.filter((key: number) => key !== k),
-      // フィールドネームをkeys、値をkeysの値から引数keyと関数removeで設定した引数kが一致しない場合のみフィルター関数で抽出して設定
-    });
-  };
 
-  const add = (): void => {
-    // 動的にフォームを追加する関数addを定義　return文がなくundefinedとなるためreturnをvoidで型定義
-    let id = 0;
-    // フォームを追加する際の値をユニークなものにするための変数定義
-    const keys = props.form.getFieldValue('keys');
-    // 文字列keysとして設定されたフォームフィールドの値を取得
-    // keysに高階コンポーネントとして設定したpropsを代入
-    const nextKeys = keys.concat(id++);
-    // nextKeysにkeysとidを連結したものを代入
-    props.form.setFieldsValue({
-      // 高階コンポーネントとして設定したpropsのsetFieldValueにフィールドネームと値を設定
-      keys: nextKeys,
-      // フィールドネームをkeys、値をnextKeysとして設定
-    });
-  };
-
-
-
-
-  const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = props.form;
-  // 高階コンポーネントとして設定したpropsを分割代入
   return(
     <Form onSubmit={handleSubmit}>
       {/* ボタン押下時の動作設定 */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"username"} selectName={"username"}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"userData"} selectName={"username"}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
       <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのnumberFormを子コンポーネントに渡す */}
       <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのdateFormを子コンポーネントに渡す */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"boolean"} selectName={"boolean"}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"booleanData"} selectName={"boolean"}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
       <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのinputFormを子コンポーネントに渡す */}
-      <DynamicInputForm addAction={add} removeAction={remove} dynamicForm={getFieldDecorator} getFieldValue={props.form.getFieldValue}/>
+      <DynamicInputForm addAction={add} removeAction={remove} dynamicForm={getFieldDecorator} getFieldValue={getFieldValue}/>
       {/* propsとして関数add、関数remove、getFieldDecorator、高階コンポーネントで設定したgetFieldValueを子コンポーネントに渡す */}
       <SubmitButton error={getFieldsError} buttonLabel={"submit"}/>
       {/* propsとしてerrorとbuttonLabelを子コンポーネントへ渡す */}
