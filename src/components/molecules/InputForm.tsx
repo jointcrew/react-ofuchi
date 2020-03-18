@@ -14,6 +14,7 @@ interface InputFormProps {
     isFieldTouched: (name: string) => boolean;
     // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
+  defaultData: any;
   // propsの型定義
 }
 
@@ -33,6 +34,7 @@ const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
             // 必須入力の設定と未入力の際に出力するエラーメッセージの設定（一度入力開始後に内容を削除した際にエラー扱いとなる）
           },
         ],
+        initialValue: [props.defaultData],
       })(<Input />)}
     </Form.Item>
   )

@@ -17,6 +17,7 @@ interface SelectFormProps {
   selectData: any;
   selectName: string;
   selectBoolean?: boolean;
+  defaultData: any;
   // propsの型定義
 }
 
@@ -30,6 +31,8 @@ const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
     <Option key={x}>{props.selectData[index]}</Option>
   ))
   const optionDataBoolean =[<Option key={0}>true</Option>, <Option key={1}>false</Option>]
+  const defaultData = props.defaultData;
+  console.log(defaultData);
 
   return(
     <Form.Item validateStatus={selectError ? 'error' : ''} help={selectError || ''} key={`${props.selectName}select`}>
@@ -42,6 +45,7 @@ const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
             // 必須入力の設定と未入力の際に出力するエラーメッセージの設定（一度入力開始後に内容を削除した際にエラー扱いとなる）
           },
         ],
+        initialValue: [props.defaultData.toString()],
         })(<Select>{props.selectBoolean === true ? optionDataBoolean : optionData}</Select>)}
     </Form.Item>
   )

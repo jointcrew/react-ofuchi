@@ -14,6 +14,7 @@ interface DateFormProps {
     isFieldTouched: (name: string) => boolean;
     // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
+  defaultData: any;
   // propsの型定義
 }
 

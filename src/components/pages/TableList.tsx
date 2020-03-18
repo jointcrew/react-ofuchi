@@ -21,7 +21,7 @@ const TableList: React.FC<TableDataProps> = (props): JSX.Element => {
   return(
     <Table dataSource={props.listData} columns={props.columnsData} pagination={false} onRow={(record, index) => {
       return {
-      onClick: () => {history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}/${index}`, {tableDataProps: record})}
+      onClick: () => {history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}/${index + 1}`, {tableDataProps: record})}
       }
     }}/>
     // antdesignのTableコンポーネントを出力

@@ -37,7 +37,6 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   const location = useLocation();
   // hooksのuseLocationを使用してブラウザロケーションをlocationに代入
-  console.log(location.state);
 
   const userData = TableListData.map(x => TableListData[x.key - 1].name);
   const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
@@ -96,15 +95,15 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   return(
     <Form onSubmit={handleSubmit}>
       {/* ボタン押下時の動作設定 */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"} defaultData={location.state!["tableDataProps"].name}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
-      <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].age}/>
       {/* propsとしてショートハンドオブジェクトのnumberFormを子コンポーネントに渡す */}
-      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].barthday}/>
       {/* propsとしてショートハンドオブジェクトのdateFormを子コンポーネントに渡す */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}  defaultData={location.state!["tableDataProps"].smoker}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
-      <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
+      <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].job}/>
       {/* propsとしてショートハンドオブジェクトのinputFormを子コンポーネントに渡す */}
       <DynamicInputForm addAction={add} removeAction={remove} dynamicForm={getFieldDecorator} getFieldValue={getFieldValue}/>
       {/* propsとして関数add、関数remove、getFieldDecorator、高階コンポーネントで設定したgetFieldValueを子コンポーネントに渡す */}
