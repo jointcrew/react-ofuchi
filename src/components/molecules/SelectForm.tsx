@@ -14,8 +14,9 @@ interface SelectFormProps {
     isFieldTouched: (name: string) => boolean;
     // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
-  selectData: string;
+  selectData: any;
   selectName: string;
+  selectBoolean?: boolean;
   // propsの型定義
 }
 
@@ -25,6 +26,10 @@ const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
   // 受け取ったpropsを分割代入
   const selectError:  false | string[] | undefined = isFieldTouched(`${props.selectName}select`) && getFieldError(`${props.selectName}select`);
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
+  const optionData = props.selectData.map((x, index:number) => (
+    <Option key={x}>{props.selectData[index]}</Option>
+  ))
+  const optionDataBoolean =[<Option key={0}>true</Option>, <Option key={1}>false</Option>]
 
   return(
     <Form.Item validateStatus={selectError ? 'error' : ''} help={selectError || ''} key={`${props.selectName}select`}>
@@ -37,7 +42,7 @@ const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
             // 必須入力の設定と未入力の際に出力するエラーメッセージの設定（一度入力開始後に内容を削除した際にエラー扱いとなる）
           },
         ],
-        })(<Select><Option value={props.selectData}>{props.selectData}</Option></Select>)}
+        })(<Select>{props.selectBoolean === true ? optionDataBoolean : optionData}</Select>)}
     </Form.Item>
   )
 }

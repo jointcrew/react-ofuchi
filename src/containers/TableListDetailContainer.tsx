@@ -41,7 +41,6 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
 
   const userData = TableListData.map(x => TableListData[x.key - 1].name);
   const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
-  console.log(userData, booleanData);
 
   const remove = (k: unknown): void => {
     // 動的にフォームを削除する関数removeを定義　引数kをunknown型、return文がなくundefinedとなるためreturnをvoid型で型定義
@@ -97,13 +96,13 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   return(
     <Form onSubmit={handleSubmit}>
       {/* ボタン押下時の動作設定 */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"userData"} selectName={"username"}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
       <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのnumberFormを子コンポーネントに渡す */}
       <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのdateFormを子コンポーネントに渡す */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={"booleanData"} selectName={"boolean"}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
       <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} />
       {/* propsとしてショートハンドオブジェクトのinputFormを子コンポーネントに渡す */}
