@@ -23,7 +23,7 @@ const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
   const inputError:  false | string[] | undefined = isFieldTouched('input') && getFieldError('input');
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（inputErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
-    <Form.Item validateStatus={inputError ? 'error' : ''} help={inputError || ''}>
+    <Form.Item validateStatus={inputError ? 'error' : ''} help={inputError || ''} key={"input"}>
       {getFieldDecorator('input', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [

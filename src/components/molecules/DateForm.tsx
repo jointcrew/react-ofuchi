@@ -23,7 +23,7 @@ const DateForm:React.FC<DateFormProps> = (props):JSX.Element => {
   const dateError:  false | string[] | undefined = isFieldTouched('date') && getFieldError('date');
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（dateErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
-    <Form.Item validateStatus={dateError ? 'error' : ''} help={dateError || ''}>
+    <Form.Item validateStatus={dateError ? 'error' : ''} help={dateError || ''} key={"date"}>
         {getFieldDecorator('date', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [

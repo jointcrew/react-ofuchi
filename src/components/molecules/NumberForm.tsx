@@ -23,7 +23,7 @@ const NumberForm:React.FC<NumberFormProps> = (props):JSX.Element => {
   const numberError:  false | string[] | undefined = isFieldTouched('number') && getFieldError('number');
   // 数値入力フィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（numberErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
-    <Form.Item validateStatus={numberError ? 'error' : ''} help={numberError || ''}>
+    <Form.Item validateStatus={numberError ? 'error' : ''} help={numberError || ''} key={"number"}>
       {getFieldDecorator('number', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [

@@ -27,7 +27,7 @@ const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
 
   return(
-    <Form.Item validateStatus={selectError ? 'error' : ''} help={selectError || ''}>
+    <Form.Item validateStatus={selectError ? 'error' : ''} help={selectError || ''} key={`${props.selectName}select`}>
         {getFieldDecorator(`${props.selectName}select`, {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [
