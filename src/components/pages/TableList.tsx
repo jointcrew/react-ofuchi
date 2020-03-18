@@ -10,7 +10,7 @@ interface TableDataProps {
   // TableListContainerからimportしたListDataで定義した値の型定義を持つ配列として型定義
   columnsData: ColumnsData[];
   // TableListContainerからimportしたColumnsDataで定義した値の型定義を持つ配列として型定義
-  clickAction: () => void;
+  clickAction: (record) => void;
   // 関数型として型定義、return文がなくundefinedとなるためreturnをvoid型で型定義
   // TableListContainerから受け取るprops.clickActionの型定義
 }
@@ -20,7 +20,7 @@ const TableList: React.FC<TableDataProps> = (props): JSX.Element => {
   return(
     <Table dataSource={props.listData} columns={props.columnsData} pagination={false} onRow={() => {
       return {
-        onClick: props.clickAction
+      onClick: props.clickAction
       }
     }}/>
     // antdesignのTableコンポーネントを出力
