@@ -15,6 +15,9 @@ interface ButtonProps {
 
 const SubmitButton: React.FC<ButtonProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型かつButtonPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
+
+  const requiredFormList = ["email", "password", "usernameselect", "number", "date", "booleanselect", "input"]
+
   const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
     // fieldsErrorにあるstring型のインデックスxの値をunknown型、returnをboolean型として型定義
     return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -24,7 +27,7 @@ const SubmitButton: React.FC<ButtonProps> = (props): JSX.Element => {
   // propsを代入
 
   return(
-      <Button htmlType="submit"  disabled={hasErrors(getFieldsError())}>
+      <Button htmlType="submit"  disabled={hasErrors(getFieldsError(requiredFormList))}>
         {/* ボタンパーツのタイプ設定と活性化と非活性化を切り替える処理 */}
         {props.buttonLabel}
         {/* 親コンポーネントからラベルのpropsを受け取り表示 */}
