@@ -32,6 +32,7 @@ export interface ColumnsData {
   // 文字列型として型定義
   key: string;
   // 文字列型として型定義
+  render?: (a:boolean) => string;
   sorter: (a: ListData, b: ListData) => number;
   // 引数a、bをListDataで定義した型、returnを数値型として持つ関数として型定義
 }
@@ -90,6 +91,13 @@ const TableListContainer: React.FC = ():JSX.Element => {
       title: "喫煙",
       dataIndex: "smoker",
       key: "smoker",
+      render: (a) => {
+        if(a === true){
+          return "○";
+        }else{
+          return "×";
+        }
+      },
       sorter: (a, b) => {
         if(a.smoker < b.smoker){
           // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.smokerの文字列よりもb.smokerの文字列の方が後ろの順番である場合に下記処理を実行
@@ -133,7 +141,7 @@ const TableListContainer: React.FC = ():JSX.Element => {
 
   const history = useHistory();
   // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
-  const rowClick = () => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`, {tableListData: TableListData});
+  const rowClick = record => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`, {tableListData: record.key});
   // 特定のアクション時（今回はTableList内の一覧表の各行をクリック）に指定したURLへ遷移するように設定
 
   return(
