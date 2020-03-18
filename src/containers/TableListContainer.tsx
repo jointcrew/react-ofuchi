@@ -2,10 +2,6 @@ import React from "react";
 // reactのコードを機能させるために必要なコンポーネントの読み込み
 import TableList from "components/pages/TableList";
 // 一覧表示用のコンポーネントを読み込み
-import { useHistory } from "react-router-dom";
-// useHistoryAPIを使用するための読み込み
-import { routePath } from "constants/Route";
-// 各コンポーネントへのルーティング用URLパスの読み込み
 import TableListData from "./TableListData.json";
 // jsonデータの読み込み
 
@@ -139,13 +135,8 @@ const TableListContainer: React.FC = ():JSX.Element => {
   // key：各列ごとに設定するキー
   // sorter：ソートの基準を決める比較関数を設定
 
-  const history = useHistory();
-  // hooksのuseHistoryを使用してブラウザヒストリーをhistoryに代入
-  const rowClick = (record) => history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}`, {tableListData: record.key});
-  // 特定のアクション時（今回はTableList内の一覧表の各行をクリック）に指定したURLへ遷移するように設定
-
   return(
-    <TableList listData={TableListData} columnsData={columnsData} clickAction={rowClick}/>
+    <TableList listData={TableListData} columnsData={columnsData}/>
     // TableListコンポーネントにpropsを渡して出力
   )
 }

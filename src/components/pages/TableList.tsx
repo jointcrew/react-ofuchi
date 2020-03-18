@@ -3,6 +3,8 @@ import React from "react";
 import { Table } from "antd";
 // antdesignのTableコンポーネントの読み込み
 import { ListData, ColumnsData } from "containers/TableListContainer";
+import { useHistory } from "react-router-dom";
+import { routePath } from "constants/Route";
 // TableListContainerから型定義のinterfaceをimport
 
 interface TableDataProps {
@@ -10,17 +12,16 @@ interface TableDataProps {
   // TableListContainerからimportしたListDataで定義した値の型定義を持つ配列として型定義
   columnsData: ColumnsData[];
   // TableListContainerからimportしたColumnsDataで定義した値の型定義を持つ配列として型定義
-  clickAction: (record) => void;
-  // 関数型として型定義、return文がなくundefinedとなるためreturnをvoid型で型定義
-  // TableListContainerから受け取るprops.clickActionの型定義
+
 }
 
 const TableList: React.FC<TableDataProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型の型定義かつinterFaceで設定したTableDataPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsの受け取る
+  const history = useHistory();
   return(
-    <Table dataSource={props.listData} columns={props.columnsData} pagination={false} onRow={() => {
+    <Table dataSource={props.listData} columns={props.columnsData} pagination={false} onRow={(record, index) => {
       return {
-      onClick: props.clickAction
+      onClick: () => {history.push(`${routePath.TABLE_LIST}${routePath.DETAIL}/${index}`, {tableDataProps: record})}
       }
     }}/>
     // antdesignのTableコンポーネントを出力
