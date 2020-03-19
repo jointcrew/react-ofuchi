@@ -17,6 +17,7 @@ const SubmitButton: React.FC<ButtonProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型かつButtonPropsとして、returnをreact側で定義しているJSX.Element型として型定義を行いpropsを受け取る
 
   const requiredFormList = ["email", "password", "usernameselect", "number", "date", "booleanselect", "input"]
+  // getFieldsErrorに与えるための配列を必須入力フォームのkeyの値で生成
 
   const hasErrors = (fieldsError: { [x: string]: unknown; }): boolean => {
     // fieldsErrorにあるstring型のインデックスxの値をunknown型、returnをboolean型として型定義

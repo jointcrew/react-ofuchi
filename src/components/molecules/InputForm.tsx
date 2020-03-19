@@ -14,17 +14,19 @@ interface InputFormProps {
     isFieldTouched: (name: string) => boolean;
     // 関数型として型定義（引数nameをstring型、returnをboolean型として型定義）
   }
-  defaultData: any;
+  defaultData: string;
   // propsの型定義
 }
 
 const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
+  // 関数コンポーネントをReact.FCかつInputFormPropsとして、returnをJSX.Elementとして型定義
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.inputForm;
   // 受け取ったpropsを分割代入
   const inputError:  false | string[] | undefined = isFieldTouched('input') && getFieldError('input');
-  // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（inputErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
+  // インプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（inputErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
     <Form.Item validateStatus={inputError ? 'error' : ''} help={inputError || ''} key={"input"}>
+      {/* フォームにkeyを設定し、inputErrorがtrueであればエラーメッセージを表示 */}
       {getFieldDecorator('input', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [
@@ -35,6 +37,7 @@ const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
           },
         ],
         initialValue: props.defaultData,
+        // propsとして受け取ったdefaultDataをフォームの初期値として設定
       })(<Input />)}
     </Form.Item>
   )

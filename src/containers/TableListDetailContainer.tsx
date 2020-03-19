@@ -39,7 +39,13 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   // hooksのuseLocationを使用してブラウザロケーションをlocationに代入
 
   const userData = TableListData.map(x => TableListData[x.key - 1].name);
+  // セレクトフォーム用の選択肢として使用する配列をuserDataに代入
+  // jsonからインポートしたデータの内、nameキーを持つデータだけをmap関数を使用して配列化
+  // jsonデータにあるkeyの値は1から設定しているためx.keyから−1して配列化
   const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
+  // セレクトフォーム用の選択肢として使用する配列をbooleanDataに代入
+  // jsonからインポートしたデータの内、smokerキーを持つデータだけをmap関数を使用して配列化
+  // jsonデータにあるkeyの値は1から設定しているためx.keyから−1して配列化
 
   const remove = (k: unknown): void => {
     // 動的にフォームを削除する関数removeを定義　引数kをunknown型、return文がなくundefinedとなるためreturnをvoid型で型定義
@@ -95,15 +101,40 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
     <Form onSubmit={handleSubmit}>
       {/* ボタン押下時の動作設定 */}
       <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"} defaultData={location.state!["tableDataProps"].name}/>
-      {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
+      {/* 
+      propsを子コンポーネントに渡す
+      selectForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
+      selectData：セレクトフォームの選択肢データを設定
+      selectName：セレクトフォームで設定するフォーム名称を設定
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+       */}
       <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].age}/>
-      {/* propsとしてショートハンドオブジェクトのnumberFormを子コンポーネントに渡す */}
+      {/* 
+      propsを子コンポーネントに渡す
+      numberForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+       */}
       <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].birthday}/>
-      {/* propsとしてショートハンドオブジェクトのdateFormを子コンポーネントに渡す */}
+      {/* 
+      propsを子コンポーネントに渡す
+      dateForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+      */}
       <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}  defaultData={location.state!["tableDataProps"].smoker}/>
-      {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
+      {/* 
+      propsを子コンポーネントに渡す
+      selectForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
+      selectData：セレクトフォームの選択肢データを設定
+      selectName：セレクトフォームで設定するフォーム名称を設定
+      selectBoolean：セレクトフォームの選択肢が真偽値の場合にtrueを渡す
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+       */}
       <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].job}/>
-      {/* propsとしてショートハンドオブジェクトのinputFormを子コンポーネントに渡す */}
+      {/* 
+      propsを子コンポーネントに渡す
+      inputForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+      */}
       <DynamicInputForm addAction={add} removeAction={remove} dynamicForm={getFieldDecorator} getFieldValue={getFieldValue}/>
       {/* propsとして関数add、関数remove、getFieldDecorator、高階コンポーネントで設定したgetFieldValueを子コンポーネントに渡す */}
       <SubmitButton error={getFieldsError} buttonLabel={"submit"}/>

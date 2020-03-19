@@ -29,6 +29,7 @@ export interface ColumnsData {
   key: string;
   // 文字列型として型定義
   render?: (a:boolean) => string;
+  // renderが設定されている場合のみ、引数aをboolean型、returnをstring型で型定義
   sorter: (a: ListData, b: ListData) => number;
   // 引数a、bをListDataで定義した型、returnを数値型として持つ関数として型定義
 }
@@ -87,13 +88,8 @@ const TableListContainer: React.FC = ():JSX.Element => {
       title: "喫煙",
       dataIndex: "smoker",
       key: "smoker",
-      render: (a) => {
-        if(a === true){
-          return a.toString();
-        }else{
-          return a.toString();
-        }
-      },
+      render: (a) => {return a.toString()},
+      // 引数aの値を文字列に変換してレンダリングする関数を実行
       sorter: (a, b) => {
         if(a.smoker < b.smoker){
           // 文字列の記号、数字、アルファベット、ひらがな、カタカナ、漢字の順番で比較した際にa.smokerの文字列よりもb.smokerの文字列の方が後ろの順番である場合に下記処理を実行
@@ -133,6 +129,7 @@ const TableListContainer: React.FC = ():JSX.Element => {
   // title：Tableコンポーネントのヘッダー項目に表示する内容
   // dataIndex：各列の各枠に表示する内容
   // key：各列ごとに設定するキー
+  // render；Tableセルに表示する内容を設定
   // sorter：ソートの基準を決める比較関数を設定
 
   return(
