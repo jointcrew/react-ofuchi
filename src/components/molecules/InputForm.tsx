@@ -34,7 +34,7 @@ const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
             // 必須入力の設定と未入力の際に出力するエラーメッセージの設定（一度入力開始後に内容を削除した際にエラー扱いとなる）
           },
         ],
-        initialValue: [props.defaultData],
+        initialValue: props.defaultData,
       })(<Input />)}
     </Form.Item>
   )

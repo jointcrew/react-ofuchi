@@ -73,7 +73,6 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
       keys: nextKeys,
       // フィールドネームをkeys、値をnextKeysとして設定
     });
-    console.log(keys)
   };
 
   const handleSubmit = (e: React.FormEvent): void => {
