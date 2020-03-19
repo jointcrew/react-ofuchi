@@ -99,7 +99,7 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
       <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].age}/>
       {/* propsとしてショートハンドオブジェクトのnumberFormを子コンポーネントに渡す */}
-      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].barthday}/>
+      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].birthday}/>
       {/* propsとしてショートハンドオブジェクトのdateFormを子コンポーネントに渡す */}
       <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}  defaultData={location.state!["tableDataProps"].smoker}/>
       {/* propsとしてショートハンドオブジェクトのselectFormを子コンポーネントに渡す */}
