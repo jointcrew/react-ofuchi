@@ -28,7 +28,7 @@ interface SelectFormProps {
 const SelectForm:React.FC<SelectFormProps> = (props):JSX.Element => {
   // 関数コンポーネントをReact.FCかつSelectFormPropsとしてreturnをJSX.Elementとして型定義
   const { Option } = Select;
-  // Selectコンポーネントで使用するOptionに必要なデータを分割代入
+  // Selectコンポーネントで使用するOptionにantdesignのSelectコンポーネントから必要なデータを分割代入
   const { getFieldDecorator, getFieldError, isFieldTouched } = props.selectForm;
   // 受け取ったpropsを分割代入
   const selectError:  false | string[] | undefined = isFieldTouched(`${props.selectName}select`) && getFieldError(`${props.selectName}select`);

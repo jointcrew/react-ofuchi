@@ -21,10 +21,12 @@ import SubmitButton from "components/atoms/SubmitButton";
 import TableListData from "./TableListData.json";
 // jsonデータの読み込み
 
-
+type User = "麻生" | "中村" | "茶谷" | "江本" | "袴田" | "大渕"
+// jsonのnameプロパティを持つ配列の型定義
 
 const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義
+
   const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched, getFieldValue, setFieldsValue } = props.form;
   // 高階コンポーネントとして設定したpropsを分割代入
 
@@ -38,10 +40,11 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   const location = useLocation();
   // hooksのuseLocationを使用してブラウザロケーションをlocationに代入
 
-  const userData = TableListData.map(x => TableListData[x.key - 1].name);
+  const userData = TableListData.map(x => TableListData[x.key - 1].name) as User[];
   // セレクトフォーム用の選択肢として使用する配列をuserDataに代入
   // jsonからインポートしたデータの内、nameキーを持つデータだけをmap関数を使用して配列化
   // jsonデータにあるkeyの値は1から設定しているためx.keyから−1して配列化
+  // asを使用してstring型の配列で定義されているものをtypeエイリアスで設定したUser型の配列に上書き
   const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
   // セレクトフォーム用の選択肢として使用する配列をbooleanDataに代入
   // jsonからインポートしたデータの内、smokerキーを持つデータだけをmap関数を使用して配列化
@@ -106,7 +109,7 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
       selectForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
       selectData：セレクトフォームの選択肢データを設定
       selectName：セレクトフォームで設定するフォーム名称を設定
-      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
+      defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定(stateの後に!を入れることでnullとundefinedを型定義から取り除く)
        */}
       <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].age}/>
       {/* 

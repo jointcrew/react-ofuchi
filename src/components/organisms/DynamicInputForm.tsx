@@ -33,6 +33,8 @@ const DynamicInputForm = (props:DynamicFormProps):JSX.Element => {
       keyは初期表示のインプットフォームが別であるためmap関数で生成する配列のインデックス番号に+1して設定 */}
       {getFieldDecorator(`comments[${index + 1}]`)(<Input placeholder="comment"/>)}
       {/* フォームのユニークな名称とplaceholderを設定 */}
+      <Icon type="plus-circle-o"  onClick={props.addAction}/>
+      {/* フォームを追加するアイコンを出力 */}
       {keys.length >= 1 ? (
         <Icon type="minus-circle-o" onClick={() => props.removeAction(k)} />
       ) : null}
@@ -45,11 +47,11 @@ const DynamicInputForm = (props:DynamicFormProps):JSX.Element => {
       {/* 初期表示のインプットフォームのlabelとkeyの設定 */}
       {getFieldDecorator("comments[0]")(<Input placeholder="comment"/>)}
       {/* フォームのユニークな名称とplaceholderを設定 */}
+    <Icon type="plus-circle-o"  onClick={props.addAction}/>
+    {/* フォームを追加するアイコンを出力 */}
     </Form.Item>
     {formItems}
     {/* formItemsの内容を出力 */}
-    <Icon type="plus-circle-o"  onClick={props.addAction}/>
-    {/* フォームを追加するアイコンを出力 */}
     </>
   )
 
