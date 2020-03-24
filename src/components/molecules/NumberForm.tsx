@@ -40,6 +40,7 @@ const NumberForm:React.FC<NumberFormProps> = (props):JSX.Element => {
         initialValue: props.defaultData,
         // propsとして受け取ったdefaultDataをフォームの初期値として設定
       })(<InputNumber/>)}
+      {/* antdesignの数値入力フォームを出力 */}
     </Form.Item>
   )
 }

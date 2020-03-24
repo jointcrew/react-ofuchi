@@ -22,7 +22,7 @@ import TableListData from "./TableListData.json";
 // jsonデータの読み込み
 
 type User = "麻生" | "中村" | "茶谷" | "江本" | "袴田" | "大渕"
-// jsonのnameプロパティを持つ配列の型定義
+// jsonのnameプロパティの値を持つ配列の型定義
 
 const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   // 関数コンポーネントをreact側で定義しているReact.FC型、returnをreact側で定義しているJSX.Element型で型定義
@@ -39,12 +39,15 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   //初回レンダリング時のボタン非活性化（warningをlintの無効化で対応）
   const location = useLocation();
   // hooksのuseLocationを使用してブラウザロケーションをlocationに代入
+  const defaultDataList = location.state!["tableDataProps"]
+  // locationに代入したstateをdefaultDataListに代入
+  // nullとundefinedの可能性をコンパイラが取り除けないため「!」をstateの末尾につけて型からnullとundefinedを取り除く
 
   const userData = TableListData.map(x => TableListData[x.key - 1].name) as User[];
   // セレクトフォーム用の選択肢として使用する配列をuserDataに代入
   // jsonからインポートしたデータの内、nameキーを持つデータだけをmap関数を使用して配列化
   // jsonデータにあるkeyの値は1から設定しているためx.keyから−1して配列化
-  // asを使用してstring型の配列で定義されているものをtypeエイリアスで設定したUser型の配列に上書き
+  // 型アサーションを使用してstring型の配列で定義されているものをtypeエイリアスで設定したUser型の配列に上書き
   const booleanData = TableListData.map(x => TableListData[x.key - 1].smoker);
   // セレクトフォーム用の選択肢として使用する配列をbooleanDataに代入
   // jsonからインポートしたデータの内、smokerキーを持つデータだけをmap関数を使用して配列化
@@ -55,7 +58,7 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
     const keys = getFieldValue('keys');
     // 文字列keysとして設定されたフォームフィールドの値を取得してkeysに代入
     if (keys.length === 0) {
-      // もしkeysが１つも設定されていない場合は下記を実行
+      // もしkeysが１つも設定されていない場合の処理
       return;
       // 追加の処理をせずそのままリターンを返す
     }
@@ -103,7 +106,7 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
   return(
     <Form onSubmit={handleSubmit}>
       {/* ボタン押下時の動作設定 */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"} defaultData={location.state!["tableDataProps"].name}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={userData} selectName={"username"} defaultData={defaultDataList.name}/>
       {/* 
       propsを子コンポーネントに渡す
       selectForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
@@ -111,19 +114,19 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
       selectName：セレクトフォームで設定するフォーム名称を設定
       defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定(stateの後に!を入れることでnullとundefinedを型定義から取り除く)
        */}
-      <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].age}/>
+      <NumberForm numberForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={defaultDataList.age}/>
       {/* 
       propsを子コンポーネントに渡す
       numberForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
       defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
        */}
-      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].birthday}/>
+      <DateForm dateForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={defaultDataList.birthday}/>
       {/* 
       propsを子コンポーネントに渡す
       dateForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
       defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
       */}
-      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}  defaultData={location.state!["tableDataProps"].smoker}/>
+      <SelectForm selectForm={{getFieldDecorator, getFieldError, isFieldTouched}} selectData={booleanData} selectName={"boolean"} selectBoolean={true}  defaultData={defaultDataList.smoker}/>
       {/* 
       propsを子コンポーネントに渡す
       selectForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定
@@ -132,7 +135,7 @@ const TableListDetail:React.FC<FormComponentProps> = (props): JSX.Element => {
       selectBoolean：セレクトフォームの選択肢が真偽値の場合にtrueを渡す
       defaultData：詳細ページ遷移時のフォーム初期値として渡すデータを設定
        */}
-      <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={location.state!["tableDataProps"].job}/>
+      <InputForm inputForm={{getFieldDecorator, getFieldError, isFieldTouched}} defaultData={defaultDataList.job}/>
       {/* 
       propsを子コンポーネントに渡す
       inputForm：高階コンポーネントとして設定したgetFieldDecorator、getFieldError、isFieldTouchedをキーと値が同一のショートハンドオブジェクトとして設定

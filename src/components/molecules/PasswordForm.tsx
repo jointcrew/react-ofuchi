@@ -25,7 +25,7 @@ const PasswordForm: React.FC<PasswordFormProps> = (props): JSX.Element => {
   // パスワードインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
     <Form.Item label="Password" validateStatus={passwordError ? 'error' : ''} help={passwordError || ''} key={"password"}>
-      {/* インプットにラベルを設定しpasswordErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
+      {/* インプットにラベルとkeyを設定しpasswordErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
       {getFieldDecorator('password', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [

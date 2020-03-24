@@ -39,6 +39,7 @@ const InputForm:React.FC<InputFormProps> = (props):JSX.Element => {
         initialValue: props.defaultData,
         // propsとして受け取ったdefaultDataをフォームの初期値として設定
       })(<Input />)}
+      {/* antdesignのインプットフォームを出力 */}
     </Form.Item>
   )
 }

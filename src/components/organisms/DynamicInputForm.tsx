@@ -12,7 +12,7 @@ interface DynamicFormProps {
   // propsとして受け取った関数の型定義
   // 関数型として引数kをunknown型、return文がないためreturnをundefined型で型定義
   addAction: () => void;
-  // props都して受け取った関数の型定義
+  // propsとして受け取った関数の型定義
   // 関数型としてreturn文がないためreturnをundefinedがたとして型定義
   // propsの型定義
 }
@@ -20,10 +20,11 @@ interface DynamicFormProps {
 
 const DynamicInputForm = (props:DynamicFormProps):JSX.Element => {
   const getFieldDecorator = props.dynamicForm;
-  // propsとして受け取ったcommentFormをgetFieldDecoratorに代入
+  // propsとして受け取ったdynamicFormをgetFieldDecoratorに代入
   const getFieldValue = props.getFieldValue;
   // propsとして受け取ったgetFieldValueを同名のgetFieldValueに代入
   getFieldDecorator('keys', { initialValue: [] });
+  // フォーム名称と初期値の設定
   const keys = getFieldValue('keys');
   // keysに文字列keysとして設定したフォームフィールドの値を代入
   const formItems = keys.map((k: unknown, index: number) => (
@@ -58,3 +59,4 @@ const DynamicInputForm = (props:DynamicFormProps):JSX.Element => {
 }
 
 export default DynamicInputForm;
+// 他のコンポーネントでも使用できるようにexport
