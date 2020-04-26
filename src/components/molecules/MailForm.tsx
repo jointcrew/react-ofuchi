@@ -24,8 +24,8 @@ const MailForm: React.FC<MailFormProps> = (props): JSX.Element => {
   const emailError:  false | string[] | undefined = isFieldTouched('email') && getFieldError('email');
   // メールインプットフィールドをクリック後エラーが発生した場合にstring型の配列で型定義したエラーメッセージを代入し、そうでない場合はundefined型のundefinedを代入（emailErrorの型定義はisFieldTouchedとgetFieldErrorの型定義を合わせたもの）
   return(
-    <Form.Item label="E-mail" validateStatus={emailError ? 'error' : ''} help={emailError || ''}>
-      {/* インプットにラベルを設定しemailErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
+    <Form.Item label="E-mail" validateStatus={emailError ? 'error' : ''} help={emailError || ''} key={"email"}>
+      {/* インプットにラベルとkeyを設定しemailErrorの値を利用して適切な動作でない場合にエラーメッセージを表示 */}
       {getFieldDecorator('email', {
         // getFieldDecoratorで括ることによって入力ルール、エラーメッセージをまとめて設定
         rules: [
